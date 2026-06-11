@@ -1,10 +1,11 @@
-// Bootstrap: cena 3D, loop de render e ligação entre estado e UI.
+// Bootstrap: cena 3D, estúdio fotográfico, loop de render e ligação estado<->UI.
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import * as state from './state.js';
-import { createMinifig, applyPose, disposeObject } from './minifig/figure.js';
+import { createMinifig, applyPose } from './minifig/figure.js';
+import { initLDraw } from './minifig/ldparts.js';
 import { initSidebar } from './ui/sidebar.js';
 import { initPanel, focusSlot } from './ui/panel.js';
 import { initToolbar, toast } from './ui/toolbar.js';
@@ -14,6 +15,52 @@ const viewport = document.getElementById('viewport');
 
 let renderer, scene, camera, controls;
 let figure = null;
+let lights = {};
+let cyclorama = null;
+
+/* ---------------- estúdio: fundos e luz ---------------- */
+
+export const FUNDOS = {
+  gradiente: { nome: 'Gradiente', css: 'radial-gradient(1200px 700px at 50% 30%, #232b3a 0%, #161a22 55%, #0e1117 100%)', clear: null },
+  branco:    { nome: 'Branco',    css: '#e8e8ea', clear: '#e8e8ea' },
+  preto:     { nome: 'Preto',     css: '#0a0a0c', clear: '#0a0a0c' },
+  azul:      { nome: 'Azul foto', css: 'linear-gradient(#27354e, #11161f)', clear: null, grad: ['#27354e', '#11161f'] },
+  ciclorama: { nome: 'Ciclorama', css: '#1a1d24', clear: null, cyc: true },
+};
+
+export const LUZES = {
+  estudio:   { nome: 'Estúdio',   key: [4, 7, 5, 2.6, '#fff4e0'], fill: [-5, 3, -4, 0.7, '#9db8ff'], rim: [0, 5, -7, 0.55, '#ffffff'], hemi: 0.55, env: 0.55 },
+  dramatica: { nome: 'Dramática', key: [5, 6, 2, 3.4, '#ffe8c8'], fill: [-6, 2, -2, 0.15, '#7a8cb8'], rim: [-2, 4, -8, 1.1, '#aac4ff'], hemi: 0.2, env: 0.3 },
+  entardecer:{ nome: 'Entardecer',key: [6, 3, 4, 2.8, '#ffb070'], fill: [-5, 4, -3, 0.5, '#7a6cb8'], rim: [0, 5, -7, 0.8, '#ff8855'], hemi: 0.35, env: 0.4 },
+  suave:     { nome: 'Suave',     key: [3, 6, 6, 1.8, '#ffffff'], fill: [-5, 4, -4, 1.1, '#e8eeff'], rim: [0, 5, -7, 0.4, '#ffffff'], hemi: 0.85, env: 0.8 },
+  fria:      { nome: 'Fria',      key: [4, 7, 5, 2.4, '#dceaff'], fill: [-5, 3, -4, 0.6, '#a8c8ff'], rim: [0, 5, -7, 0.7, '#cfe0ff'], hemi: 0.45, env: 0.5 },
+};
+
+function applyStudio() {
+  const s = state.config.studio;
+  const fundo = FUNDOS[s.fundo] || FUNDOS.gradiente;
+  const luz = LUZES[s.luz] || LUZES.estudio;
+  const k = s.intensidade ?? 1;
+
+  // fundo
+  viewport.style.background = fundo.css;
+  scene.background = null;
+  if (cyclorama) cyclorama.visible = !!fundo.cyc;
+
+  // luzes
+  const setLight = (light, [x, y, z, i, color]) => {
+    light.position.set(x, y, z);
+    light.intensity = i * k;
+    light.color.set(color);
+  };
+  setLight(lights.key, luz.key);
+  setLight(lights.fill, luz.fill);
+  setLight(lights.rim, luz.rim);
+  lights.hemi.intensity = luz.hemi * k;
+  scene.environmentIntensity = luz.env * k;
+}
+
+/* ---------------- cena ---------------- */
 
 function initScene() {
   renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
@@ -25,11 +72,9 @@ function initScene() {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
   scene = new THREE.Scene();
-  scene.background = null;
 
   const pmrem = new THREE.PMREMGenerator(renderer);
   scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-  scene.environmentIntensity = 0.55;
 
   camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
   camera.position.set(3.4, 3.6, 7.2);
@@ -38,34 +83,31 @@ function initScene() {
   controls.target.set(0, 2.05, 0);
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
-  controls.minDistance = 2.2;
-  controls.maxDistance = 16;
+  controls.minDistance = 1.6;
+  controls.maxDistance = 18;
   controls.maxPolarAngle = Math.PI * 0.52;
   controls.update();
 
-  const hemi = new THREE.HemisphereLight(0xcdd9ff, 0x4a4036, 0.55);
-  scene.add(hemi);
+  lights.hemi = new THREE.HemisphereLight(0xcdd9ff, 0x4a4036, 0.55);
+  scene.add(lights.hemi);
 
-  const key = new THREE.DirectionalLight(0xfff4e0, 2.6);
-  key.position.set(4, 7, 5);
-  key.castShadow = true;
-  key.shadow.mapSize.set(2048, 2048);
-  key.shadow.camera.left = -4.5;
-  key.shadow.camera.right = 4.5;
-  key.shadow.camera.top = 6;
-  key.shadow.camera.bottom = -2;
-  key.shadow.camera.far = 24;
-  key.shadow.bias = -0.0004;
-  key.shadow.radius = 6;
-  scene.add(key);
+  lights.key = new THREE.DirectionalLight(0xfff4e0, 2.6);
+  lights.key.castShadow = true;
+  lights.key.shadow.mapSize.set(2048, 2048);
+  lights.key.shadow.camera.left = -4.5;
+  lights.key.shadow.camera.right = 4.5;
+  lights.key.shadow.camera.top = 6;
+  lights.key.shadow.camera.bottom = -2;
+  lights.key.shadow.camera.far = 28;
+  lights.key.shadow.bias = -0.0004;
+  lights.key.shadow.radius = 6;
+  scene.add(lights.key);
 
-  const fill = new THREE.DirectionalLight(0x9db8ff, 0.7);
-  fill.position.set(-5, 3, -4);
-  scene.add(fill);
+  lights.fill = new THREE.DirectionalLight(0x9db8ff, 0.7);
+  scene.add(lights.fill);
 
-  const rim = new THREE.DirectionalLight(0xffffff, 0.55);
-  rim.position.set(0, 5, -7);
-  scene.add(rim);
+  lights.rim = new THREE.DirectionalLight(0xffffff, 0.55);
+  scene.add(lights.rim);
 
   // chão que só recebe sombra
   const ground = new THREE.Mesh(
@@ -76,8 +118,23 @@ function initScene() {
   ground.receiveShadow = true;
   scene.add(ground);
 
+  // ciclorama de estúdio (chão + parede curva), visível só no fundo "ciclorama"
+  const cycMat = new THREE.MeshStandardMaterial({ color: 0xcfd2d8, roughness: 0.95, metalness: 0, side: THREE.BackSide });
+  const cycGeo = new THREE.CylinderGeometry(16, 16, 44, 64, 1, true, Math.PI * 0.4, Math.PI * 1.2);
+  cyclorama = new THREE.Group();
+  const wall = new THREE.Mesh(cycGeo, cycMat);
+  wall.position.y = 22;
+  const floor = new THREE.Mesh(new THREE.CircleGeometry(16, 64), new THREE.MeshStandardMaterial({ color: 0xcfd2d8, roughness: 0.95, metalness: 0 }));
+  floor.rotation.x = -Math.PI / 2;
+  floor.position.y = -0.01;
+  floor.receiveShadow = true;
+  cyclorama.add(wall, floor);
+  cyclorama.visible = false;
+  scene.add(cyclorama);
+
   controls.addEventListener('start', () => { userMovedCamera = true; });
 
+  applyStudio();
   resize();
   new ResizeObserver(resize).observe(viewport);
 }
@@ -91,7 +148,6 @@ function resize() {
   renderer.setSize(w, h, false);
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
-  // afasta a câmera em telas estreitas para a minifig caber inteira
   if (!userMovedCamera) {
     const dist = camera.aspect < 0.9 ? 8.0 / Math.max(camera.aspect, 0.45) : 8.0;
     camera.position.sub(controls.target).setLength(dist).add(controls.target);
@@ -99,14 +155,23 @@ function resize() {
   }
 }
 
-function rebuild() {
-  if (figure) {
-    scene.remove(figure.root);
-    disposeObject(figure.root);
+/* ---------------- reconstrução assíncrona ---------------- */
+
+let buildSeq = 0;
+
+async function rebuild() {
+  const seq = ++buildSeq;
+  try {
+    const next = await createMinifig(state.config, state.db);
+    if (seq !== buildSeq) return; // outra reconstrução mais nova já chegou
+    if (figure) scene.remove(figure.root);
+    figure = next;
+    applyPose(figure.joints, state.config.pose);
+    scene.add(figure.root);
+  } catch (err) {
+    console.error('falha ao montar minifig:', err);
+    toast('Erro ao carregar peça 😕');
   }
-  figure = createMinifig(state.config, state.db);
-  applyPose(figure.joints, state.config.pose);
-  scene.add(figure.root);
 }
 
 function animate() {
@@ -117,20 +182,26 @@ function animate() {
 
 /* ---------------- captura / export ---------------- */
 
-function makeGradientTexture() {
+function makeGradientTexture(stops) {
   const c = document.createElement('canvas');
   c.width = 4;
   c.height = 512;
   const ctx = c.getContext('2d');
   const grad = ctx.createLinearGradient(0, 0, 0, 512);
-  grad.addColorStop(0, '#2a3347');
-  grad.addColorStop(0.6, '#181d27');
-  grad.addColorStop(1, '#0e1116');
+  const list = stops || ['#2a3347', '#181d27', '#0e1116'];
+  list.forEach((color, i) => grad.addColorStop(i / (list.length - 1), color));
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, 4, 512);
   const tex = new THREE.CanvasTexture(c);
   tex.colorSpace = THREE.SRGBColorSpace;
   return tex;
+}
+
+function currentBackgroundForExport() {
+  const fundo = FUNDOS[state.config.studio.fundo] || FUNDOS.gradiente;
+  if (fundo.cyc) return null; // ciclorama é geometria, já aparece
+  if (fundo.clear) return new THREE.Color(fundo.clear);
+  return makeGradientTexture(fundo.grad);
 }
 
 function renderShot(w, h, { transparent = true } = {}) {
@@ -145,14 +216,14 @@ function renderShot(w, h, { transparent = true } = {}) {
   camera.updateProjectionMatrix();
   let bg = null;
   if (!transparent) {
-    bg = makeGradientTexture();
+    bg = currentBackgroundForExport();
     scene.background = bg;
   }
   renderer.render(scene, camera);
   const url = renderer.domElement.toDataURL('image/png');
 
   scene.background = null;
-  bg?.dispose();
+  if (bg?.dispose) bg.dispose();
   renderer.setPixelRatio(prevRatio);
   renderer.setSize(prevW / prevRatio, prevH / prevRatio, false);
   camera.aspect = prevAspect;
@@ -161,8 +232,8 @@ function renderShot(w, h, { transparent = true } = {}) {
   return url;
 }
 
-function exportPNG({ transparent }) {
-  return renderShot(1600, 2000, { transparent });
+function exportPNG({ transparent, size = 2000 }) {
+  return renderShot(Math.round(size * 0.8), size, { transparent });
 }
 
 function captureThumb() {
@@ -173,7 +244,7 @@ function captureThumb() {
 
 async function boot() {
   try {
-    await state.loadData();
+    await Promise.all([state.loadData(), initLDraw()]);
   } catch (err) {
     document.body.innerHTML = `<div style="display:grid;place-items:center;height:100vh;color:#e8eaef;font-family:sans-serif;text-align:center;padding:20px">
       <div><h2>Não foi possível carregar o catálogo de peças 😕</h2>
@@ -207,17 +278,19 @@ async function boot() {
     if (figure) applyPose(figure.joints, state.config.pose);
     state.autosave();
   });
+  state.on('studio', () => {
+    applyStudio();
+    state.autosave();
+  });
 
-  // some o hint depois de interagir
   const hint = document.getElementById('viewport-hint');
   canvas.addEventListener('pointerdown', () => hint.classList.add('fade'), { once: true });
 
-  // nome inicial no campo
   const nameEl = document.getElementById('fig-name');
   nameEl.value = state.config.nome;
 
   // hook para depuração/testes no console
-  window.__minifig = { camera, controls, get figure() { return figure; } };
+  window.__minifig = { camera, controls, scene, get figure() { return figure; } };
 }
 
 boot();

@@ -2,7 +2,7 @@
 
 import { defaultPose, POSES, randomPose } from './minifig/poses.js';
 
-const listeners = { change: new Set(), pose: new Set(), history: new Set() };
+const listeners = { change: new Set(), pose: new Set(), history: new Set(), studio: new Set() };
 
 export const db = {
   parts: new Map(),
@@ -19,22 +19,23 @@ const HISTORY_LIMIT = 80;
 
 export function defaultConfig() {
   return {
-    v: 1,
+    v: 2,
     nome: '',
     slots: {
-      head: { part: '3626-smiley', color: 'yellow' },
-      headgear: { part: '3901-hair', color: 'brown' },
-      torso: { part: '973-plain', color: 'red' },
-      arms: { part: '981-982', color: 'red' },
-      hands: { part: '983', color: 'yellow' },
-      legs: { part: '970-plain', color: 'blue' },
-      handL: { part: null, color: 'lightGray' },
-      handR: { part: null, color: 'lightGray' },
-      body: { part: null, color: 'red' },
-      base: { part: null, color: 'green' },
-      pet: { part: null, color: 'white' },
+      head: { part: '3626bp01', color: '14' },
+      headgear: { part: '3901', color: '70' },
+      torso: { part: '973', color: '4' },
+      arms: { part: '3818', color: '4' },
+      hands: { part: '3820', color: '14' },
+      legs: { part: '970c00', color: '1' },
+      handL: { part: null, color: '71' },
+      handR: { part: null, color: '71' },
+      body: { part: null, color: '4' },
+      base: { part: null, color: '2' },
+      pet: { part: null, color: '15' },
     },
     pose: defaultPose(),
+    studio: { fundo: 'gradiente', luz: 'estudio', intensidade: 1.0 },
   };
 }
 
@@ -166,19 +167,23 @@ export function replaceConfig(next) {
 
 /* ---------------- aleatório ---------------- */
 
+// Temas com cores fiéis aos conjuntos clássicos
 const THEMES = [
-  { headgear: '3842-helmet', torso: '973-space', body: '3838-airtanks', handR: '3963-blaster', palette: ['white', 'red', 'blue', 'yellow'] },
-  { headgear: '2528-bicorne', torso: '973-pirate', handR: '3847-sword', pet: '2546-parrot', legs: '970-belt', palette: ['black', 'darkRed', 'brown'] },
-  { headgear: 'x577-bandana', torso: '973-pirate', handR: '2561-musket', legs: '970-belt', palette: ['red', 'black', 'brown'] },
-  { headgear: '3844-helm', torso: '973-knight', handR: '3847-sword', handL: '3846-shield', body: 'bb38-cape', palette: ['lightGray', 'darkGray', 'blue', 'darkRed'] },
-  { headgear: '3624-police', torso: '973-police', legs: '970-plain', palette: ['darkBlue', 'black'] },
-  { headgear: '3834-fire', torso: '973-fire', handR: '3835-axe', palette: ['red', 'black', 'yellow'] },
-  { headgear: '3833-helmet', torso: '973-overalls', handR: '3837-shovel', palette: ['yellow', 'orange', 'blue'] },
-  { headgear: '3629-cowboy', torso: '973-plaid', handR: '30258-map', palette: ['brown', 'darkRed', 'tan'] },
-  { headgear: '6131-wizard', torso: '973-plain', handR: '36752-wand', body: 'bb38-cape', palette: ['darkBlue', 'magenta', 'black'] },
-  { headgear: '71015-crown', torso: '973-plain', handR: '2343-goblet', body: 'bb38-cape', palette: ['darkRed', 'pearlGold', 'magenta'] },
-  { headgear: null, torso: '973-doctor', legs: '970-plain', palette: ['white', 'mediumBlue', 'sandGreen'] },
-  { headgear: '4485-cap', torso: '973-hawaii', handR: '30089-camera', palette: ['mediumBlue', 'orange', 'lime', 'magenta'] },
+  { headgear: '2447b-helm', torso: '973p90', body: '3838', handR: '3959', torsoColor: '4', legsColor: '4', gearColor: '4', palette: ['4'] },
+  { headgear: '3842b', torso: '973p90', body: '3838', torsoColor: '15', legsColor: '15', gearColor: '15', palette: ['15'] },
+  { headgear: '2528a', torso: '973p36', handR: '2530', pet: '2546', torsoColor: '0', legsColor: '0', gearColor: '0', palette: ['0', '320'] },
+  { headgear: '30133', torso: '973p31', handR: '2561', torsoColor: '15', legsColor: '1', gearColor: '4', palette: ['4', '1'] },
+  { headgear: '3844-visor', torso: '973p40', handR: '3847', handL: '3846', body: '50231', torsoColor: '71', legsColor: '71', gearColor: '71', palette: ['1', '4', '320'] },
+  { headgear: '3624', torso: '973p1f', torsoColor: '0', legsColor: '0', gearColor: '0', palette: ['0'] },
+  { headgear: '3834', torso: '973p21', handR: '3835', torsoColor: '0', legsColor: '0', gearColor: '4', palette: ['4', '0'] },
+  { headgear: '3833', torso: '973p0e', handR: '3837', torsoColor: '15', legsColor: '1', gearColor: '14', palette: ['14', '25'] },
+  { headgear: '3629', torso: '973p0l', handR: '2561', torsoColor: '4', legsColor: '70', gearColor: '70', palette: ['70', '19'] },
+  { headgear: '6131', torso: '973', handR: 'energy-blade', body: '50231', torsoColor: '272', legsColor: '272', gearColor: '272', palette: ['272', '26', '0'] },
+  { headgear: '71015', torso: '973', handR: '2343', body: '50231', torsoColor: '320', legsColor: '320', gearColor: '297', palette: ['320', '26'] },
+  { headgear: null, torso: '973p25', torsoColor: '15', legsColor: '15', palette: ['15', '73'] },
+  { headgear: '4485b', torso: '973p5l', handR: '30089a', torsoColor: '15', legsColor: '1', gearColor: '1', palette: ['73', '25', '27'] },
+  { headgear: '3878', torso: '973p18', handR: '4449', torsoColor: '0', legsColor: '0', gearColor: '0', palette: ['0', '72'] },
+  { headgear: '10048', torso: '973p7k', torsoColor: '15', legsColor: '0', gearColor: '0', palette: ['15', '0'] },
 ];
 
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
@@ -186,48 +191,46 @@ const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 export function randomize() {
   pushHistory();
   const byCat = (cat) => db.partsList.filter((p) => p.categoria === cat);
-  const heads = byCat('cabeca');
-  const skins = ['yellow', 'yellow', 'yellow', 'nougat'];
-  const skin = pick(skins);
+  const heads = byCat('cabeca').filter((p) => !['3626bpa8', '3626bp63'].includes(p.id));
+  const skin = '14'; // amarelo clássico
   const next = defaultConfig();
   next.nome = config.nome;
+  next.studio = { ...config.studio };
 
-  if (Math.random() < 0.65) {
-    // tema coerente
+  if (Math.random() < 0.7) {
+    // tema fiel a um conjunto clássico
     const t = pick(THEMES);
-    const torsoPart = db.parts.get(t.torso);
     next.slots.head = { part: pick(heads).id, color: skin };
-    next.slots.headgear = { part: t.headgear, color: t.headgear ? db.parts.get(t.headgear).defaultColor : 'brown' };
-    next.slots.torso = { part: t.torso, color: torsoPart.defaultColor };
-    next.slots.arms.color = torsoPart.defaultColor;
+    next.slots.headgear = { part: t.headgear, color: t.gearColor || '70' };
+    next.slots.torso = { part: t.torso, color: t.torsoColor };
+    next.slots.arms.color = t.torsoColor;
     next.slots.hands.color = skin;
-    next.slots.legs = { part: t.legs || '970-plain', color: pick(t.palette) };
-    next.slots.handR = { part: t.handR || null, color: t.handR ? db.parts.get(t.handR).defaultColor : 'lightGray' };
-    next.slots.handL = { part: t.handL || null, color: t.handL ? db.parts.get(t.handL).defaultColor : 'lightGray' };
-    next.slots.body = { part: t.body || null, color: t.body ? pick(t.palette) : 'red' };
-    next.slots.pet = { part: t.pet || null, color: t.pet ? db.parts.get(t.pet).defaultColor : 'white' };
+    next.slots.legs = { part: t.legs || '970c00', color: t.legsColor };
+    next.slots.handR = { part: t.handR || null, color: t.handR ? db.parts.get(t.handR).defaultColor : '71' };
+    next.slots.handL = { part: t.handL || null, color: t.handL ? db.parts.get(t.handL).defaultColor : '71' };
+    next.slots.body = { part: t.body || null, color: t.body ? pick(t.palette) : '4' };
+    next.slots.pet = { part: t.pet || null, color: t.pet ? db.parts.get(t.pet).defaultColor : '15' };
   } else {
     // mistura livre
     const solidColors = db.colorsList.filter((c) => !c.trans).map((c) => c.id);
-    const gear = byCat('chapeu');
-    const torsos = byCat('torso');
-    const legs = byCat('pernas');
-    const accs = byCat('acessorio');
     next.slots.head = { part: pick(heads).id, color: skin };
-    next.slots.headgear = { part: Math.random() < 0.85 ? pick(gear).id : null, color: pick(solidColors) };
-    const torsoColor = pick(solidColors);
-    next.slots.torso = { part: pick(torsos).id, color: torsoColor };
-    next.slots.arms.color = torsoColor;
+    next.slots.headgear = { part: Math.random() < 0.85 ? pick(byCat('chapeu')).id : null, color: pick(solidColors) };
+    const torsoPart = pick(byCat('torso'));
+    next.slots.torso = { part: torsoPart.id, color: torsoPart.defaultColor };
+    next.slots.arms.color = torsoPart.defaultColor;
     next.slots.hands.color = skin;
-    next.slots.legs = { part: pick(legs).id, color: pick(solidColors) };
-    next.slots.handR = { part: Math.random() < 0.7 ? pick(accs).id : null, color: pick(solidColors) };
-    next.slots.handL = { part: Math.random() < 0.35 ? pick(accs).id : null, color: pick(solidColors) };
+    next.slots.legs = { part: pick(byCat('pernas')).id, color: pick(solidColors) };
+    const accs = byCat('acessorio');
+    const accR = Math.random() < 0.7 ? pick(accs) : null;
+    const accL = Math.random() < 0.35 ? pick(accs) : null;
+    next.slots.handR = { part: accR?.id || null, color: accR?.defaultColor || '71' };
+    next.slots.handL = { part: accL?.id || null, color: accL?.defaultColor || '71' };
     next.slots.body = { part: Math.random() < 0.3 ? pick(byCat('corpo')).id : null, color: pick(solidColors) };
   }
 
   if (Math.random() < 0.35) {
     const bases = db.partsList.filter((p) => p.sub === 'base');
-    next.slots.base = { part: pick(bases).id, color: pick(['green', 'lightGray', 'tan', 'darkGray']) };
+    next.slots.base = { part: pick(bases).id, color: pick(['2', '71', '19', '72']) };
   }
   if (!next.slots.pet.part && Math.random() < 0.2) {
     const pets = db.partsList.filter((p) => p.sub === 'pet');
@@ -263,7 +266,19 @@ export function sanitize(raw) {
     }
     base.pose.preset = raw.pose.preset ?? null;
   }
+  if (raw.studio && typeof raw.studio === 'object') {
+    if (typeof raw.studio.fundo === 'string') base.studio.fundo = raw.studio.fundo;
+    if (typeof raw.studio.luz === 'string') base.studio.luz = raw.studio.luz;
+    if (typeof raw.studio.intensidade === 'number' && isFinite(raw.studio.intensidade)) {
+      base.studio.intensidade = Math.min(2, Math.max(0.2, raw.studio.intensidade));
+    }
+  }
   return base;
+}
+
+export function setStudio(patch) {
+  Object.assign(config.studio, patch);
+  emit('studio');
 }
 
 // base64url da config para compartilhar por URL

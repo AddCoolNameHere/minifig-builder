@@ -119,10 +119,48 @@ export function focusSlot(slot) {
   renderSwatches();
 }
 
+function renderStudio() {
+  // import dinâmico evita ciclo (main.js importa panel.js)
+  import('../main.js').then(({ FUNDOS, LUZES }) => {
+    const fundosEl = document.getElementById('studio-fundos');
+    const luzesEl = document.getElementById('studio-luzes');
+    const render = () => {
+      fundosEl.innerHTML = '';
+      for (const [key, def] of Object.entries(FUNDOS)) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'pose-btn' + (state.config.studio.fundo === key ? ' active' : '');
+        b.textContent = def.nome;
+        b.addEventListener('click', () => { state.setStudio({ fundo: key }); render(); });
+        fundosEl.appendChild(b);
+      }
+      luzesEl.innerHTML = '';
+      for (const [key, def] of Object.entries(LUZES)) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'pose-btn' + (state.config.studio.luz === key ? ' active' : '');
+        b.textContent = def.nome;
+        b.addEventListener('click', () => { state.setStudio({ luz: key }); render(); });
+        luzesEl.appendChild(b);
+      }
+    };
+    render();
+    const slider = document.getElementById('studio-intensidade');
+    const out = document.getElementById('studio-intensidade-out');
+    slider.value = Math.round((state.config.studio.intensidade ?? 1) * 100);
+    out.textContent = `${slider.value}%`;
+    slider.addEventListener('input', () => {
+      out.textContent = `${slider.value}%`;
+      state.setStudio({ intensidade: Number(slider.value) / 100 });
+    });
+  });
+}
+
 export function initPanel() {
   renderSwatches();
   renderPresets();
   renderSliders();
+  renderStudio();
 
   nameEl.addEventListener('input', () => state.setName(nameEl.value));
 

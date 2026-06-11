@@ -1,9 +1,8 @@
-// Miniaturas 3D das peças, renderizadas sob demanda num renderer offscreen.
+// Miniaturas 3D das peças oficiais, renderizadas sob demanda.
 
 import * as THREE from 'three';
-import { buildHead, buildTorso, buildLegsAssembly, buildArm, buildHand, disposeObject } from '../minifig/figure.js';
-import { buildAttachment } from '../minifig/parts3d.js';
-import { db } from '../state.js';
+import { loadPart, loadComposite } from '../minifig/ldparts.js';
+import { SCALE } from '../minifig/figure.js';
 
 const SIZE = 140;
 let renderer = null;
@@ -11,7 +10,7 @@ let scene = null;
 let camera = null;
 const cache = new Map();
 const queue = [];
-let scheduled = false;
+let pumping = false;
 
 function ensureRenderer() {
   if (renderer) return;
@@ -22,52 +21,57 @@ function ensureRenderer() {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
   scene = new THREE.Scene();
-  scene.add(new THREE.HemisphereLight(0xcdd9ff, 0x4a4036, 1.4));
-  const key = new THREE.DirectionalLight(0xffffff, 2.2);
+  scene.add(new THREE.HemisphereLight(0xcdd9ff, 0x4a4036, 1.6));
+  const key = new THREE.DirectionalLight(0xffffff, 2.4);
   key.position.set(3, 5, 4);
   scene.add(key);
-  const rim = new THREE.DirectionalLight(0xaac4ff, 0.9);
+  const rim = new THREE.DirectionalLight(0xaac4ff, 1.0);
   rim.position.set(-4, 2, -3);
   scene.add(rim);
 
-  camera = new THREE.PerspectiveCamera(30, 1, 0.01, 50);
+  camera = new THREE.PerspectiveCamera(30, 1, 0.01, 100);
 }
 
-function buildPreviewObject(part) {
-  const colorEntry = db.colors.get(part.defaultColor) || db.colors.get('lightGray');
-  switch (part.categoria) {
-    case 'cabeca':
-      return buildHead(part.decal, colorEntry);
-    case 'torso':
-      return buildTorso(part.decal, colorEntry);
-    case 'pernas':
-      return buildLegsAssembly(part, colorEntry).group;
-    case 'bracos': {
-      const g = new THREE.Group();
-      const l = buildArm(-1, colorEntry, db.colors.get('yellow'));
-      const r = buildArm(1, colorEntry, db.colors.get('yellow'));
-      l.position.x = -0.35;
-      r.position.x = 0.35;
-      g.add(l, r);
-      return g;
-    }
-    case 'maos':
-      return buildHand(colorEntry);
-    default:
-      return buildAttachment(part.geo, colorEntry, db);
+async function buildPreviewObject(part) {
+  const color = part.defaultColor || '71';
+  let obj;
+  if (part.composite) {
+    obj = await loadComposite(part.composite, color);
+  } else if (part.legs === 'normal') {
+    obj = new THREE.Group();
+    const [hips, legR, legL] = await Promise.all([
+      loadPart('3815b', color),
+      loadPart('3816c', color),
+      loadPart('3817c', color),
+    ]);
+    legR.position.y = 12;
+    legL.position.y = 12;
+    obj.add(hips, legR, legL);
+  } else if (part.categoria === 'bracos') {
+    obj = new THREE.Group();
+    const [r, l] = await Promise.all([loadPart('3818', color), loadPart('3819', color)]);
+    r.position.x = -10;
+    l.position.x = 10;
+    obj.add(r, l);
+  } else {
+    obj = await loadPart(part.file, color);
   }
+  const wrap = new THREE.Group();
+  wrap.rotation.x = Math.PI; // LDraw Y-down -> Y-up
+  wrap.scale.setScalar(SCALE);
+  wrap.add(obj);
+  return wrap;
 }
 
-function renderThumb(part) {
+async function renderThumb(part) {
   ensureRenderer();
-  const obj = buildPreviewObject(part);
-  if (!obj) return null;
+  const obj = await buildPreviewObject(part);
   scene.add(obj);
 
   const bbox = new THREE.Box3().setFromObject(obj);
   const center = bbox.getCenter(new THREE.Vector3());
   const sphere = bbox.getBoundingSphere(new THREE.Sphere());
-  const dist = Math.max(sphere.radius, 0.2) * 3.4;
+  const dist = Math.max(sphere.radius, 0.2) * 3.2;
   const dir = new THREE.Vector3(0.55, 0.45, 1).normalize();
   camera.position.copy(center).addScaledVector(dir, dist);
   camera.lookAt(center);
@@ -75,33 +79,31 @@ function renderThumb(part) {
   renderer.render(scene, camera);
   const url = renderer.domElement.toDataURL('image/png');
   scene.remove(obj);
-  disposeObject(obj);
   return url;
 }
 
-function pump() {
-  scheduled = false;
-  const started = performance.now();
-  while (queue.length && performance.now() - started < 12) {
+async function pump() {
+  if (pumping) return;
+  pumping = true;
+  while (queue.length) {
     const { part, img } = queue.shift();
     let url = cache.get(part.id);
     if (url === undefined) {
       try {
-        url = renderThumb(part);
-      } catch {
+        url = await renderThumb(part);
+      } catch (err) {
+        console.warn('thumb falhou:', part.id, err);
         url = null;
       }
       cache.set(part.id, url);
     }
-    if (url && img.isConnected) img.src = url;
+    // a grid pode ter re-renderizado: localiza o img atual da peça
+    const target = img.isConnected ? img : document.querySelector(`img[data-part-id="${CSS.escape(part.id)}"]`);
+    if (url && target) target.src = url;
+    // respiro para não travar a UI
+    await new Promise((r) => setTimeout(r, 0));
   }
-  if (queue.length) schedule();
-}
-
-function schedule() {
-  if (scheduled) return;
-  scheduled = true;
-  requestAnimationFrame(pump);
+  pumping = false;
 }
 
 export function requestThumb(part, img) {
@@ -111,5 +113,5 @@ export function requestThumb(part, img) {
     return;
   }
   queue.push({ part, img });
-  schedule();
+  pump();
 }

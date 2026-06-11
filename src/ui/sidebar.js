@@ -46,6 +46,7 @@ function makeCard({ name, partId, selected, part, removeIcon, onClick }) {
     const img = document.createElement('img');
     img.alt = name;
     img.loading = 'lazy';
+    img.dataset.partId = part.id;
     thumb.appendChild(img);
     requestThumb(part, img);
   }
