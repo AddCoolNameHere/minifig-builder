@@ -25,6 +25,8 @@ const SLIDERS = [
   { key: 'handR', label: 'Mão dir.', min: -150, max: 150 },
   { key: 'legLx', label: 'Perna esq.', min: -110, max: 70 },
   { key: 'legRx', label: 'Perna dir.', min: -110, max: 70 },
+  { key: 'itemL', label: 'Item esq.', min: -180, max: 180 },
+  { key: 'itemR', label: 'Item dir.', min: -180, max: 180 },
 ];
 
 let activeSlot = 'torso';

@@ -112,11 +112,20 @@ export async function createMinifig(config, db) {
     hand.rotation.x = Math.PI / 4;
     hand.userData.baseQuat = new THREE.Quaternion().setFromEuler(hand.rotation);
     hand.add(handMesh);
-    if (acc) hand.add(acc);
+    // o item gira em torno do eixo da barra presa no clipe (Y local da mão).
+    // O centro do clipe em C fica em z=-10 no espaço da mão (calibrado
+    // visualmente com barras de teste) — é a origem que o MLCad assume.
+    let spin = null;
+    if (acc) {
+      spin = new THREE.Group();
+      spin.position.set(0, 0, -10);
+      spin.add(acc);
+      hand.add(spin);
+    }
     swing.add(hand);
 
     ldraw.add(pivot);
-    return { swing, hand };
+    return { swing, hand, spin };
   };
   // 3818 é o braço DIREITO (fica em x negativo); 3819 o esquerdo
   const armR = mkArm(-1, got.armR, got.handR, got.accR || null);
@@ -125,6 +134,8 @@ export async function createMinifig(config, db) {
   joints.armL = armL.swing;
   joints.handR = armR.hand;
   joints.handL = armL.hand;
+  joints.itemR = armR.spin;
+  joints.itemL = armL.spin;
 
   // pernas
   if (legsType === 'normal') {
@@ -217,6 +228,8 @@ export function applyPose(joints, pose) {
   }
   if (joints.legL) joints.legL.rotation.x = -(pose.legLx || 0);
   if (joints.legR) joints.legR.rotation.x = -(pose.legRx || 0);
+  if (joints.itemL) joints.itemL.rotation.y = pose.itemL || 0;
+  if (joints.itemR) joints.itemR.rotation.y = pose.itemR || 0;
 }
 
 export function disposeObject(obj) {

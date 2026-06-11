@@ -269,7 +269,9 @@ main {
   flex-direction: column;
   gap: 18px;
 }
-.panel-section { display: flex; flex-direction: column; gap: 9px; }
+/* flex-shrink 0: sem isso as seções comprimem em vez de gerar scroll,
+   cortando o fim do painel */
+.panel-section { display: flex; flex-direction: column; gap: 9px; flex-shrink: 0; }
 .panel-label {
   font-size: 11.5px;
   text-transform: uppercase;

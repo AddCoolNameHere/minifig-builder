@@ -1,10 +1,10 @@
 // Presets de pose. Ângulos em radianos.
 // Convenções: armX negativo = braço para frente/cima; legX negativo = perna para frente.
 
-export const POSE_KEYS = ['head', 'armLx', 'armLz', 'armRx', 'armRz', 'handL', 'handR', 'legLx', 'legRx'];
+export const POSE_KEYS = ['head', 'armLx', 'armLz', 'armRx', 'armRz', 'handL', 'handR', 'legLx', 'legRx', 'itemL', 'itemR'];
 
 export function defaultPose() {
-  return { preset: 'parado', head: 0, armLx: -0.06, armLz: 0, armRx: -0.06, armRz: 0, handL: 0, handR: 0, legLx: 0, legRx: 0 };
+  return { preset: 'parado', head: 0, armLx: -0.06, armLz: 0, armRx: -0.06, armRz: 0, handL: 0, handR: 0, legLx: 0, legRx: 0, itemL: 0, itemR: 0 };
 }
 
 export const POSES = {

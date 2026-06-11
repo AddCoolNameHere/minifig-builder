@@ -731,7 +731,14 @@
      "glow": true
     }
    ],
-   "defaultColor": "43"
+   "defaultColor": "43",
+   "grip": {
+    "pos": [
+     0.0,
+     -20.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "3835",
@@ -1961,7 +1968,14 @@
    "nome": "Sword with Jagged Edges with Marbled Trans Medium Blue",
    "tags": [],
    "file": "11439p04",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     -2.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "11538",
@@ -3109,7 +3123,25 @@
     "marvel"
    ],
    "file": "18836p40",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "18836p41",
@@ -3119,7 +3151,25 @@
     "marvel"
    ],
    "file": "18836p41",
-   "defaultColor": "297"
+   "defaultColor": "297",
+   "grip": {
+    "pos": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "18836p42",
@@ -3129,7 +3179,25 @@
     "marvel"
    ],
    "file": "18836p42",
-   "defaultColor": "320"
+   "defaultColor": "320",
+   "grip": {
+    "pos": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "18836pq0",
@@ -3791,7 +3859,14 @@
    "nome": "Sword with Hexagonal Decorations with Light Bluish Grey",
    "tags": [],
    "file": "24108pe2",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     16.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "24108pe3",
@@ -4643,7 +4718,25 @@
     "marvel"
    ],
    "file": "2586p4m",
-   "defaultColor": "297"
+   "defaultColor": "297",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "2586p4n",
@@ -4654,7 +4747,25 @@
     "marvel"
    ],
    "file": "2586p4n",
-   "defaultColor": "4"
+   "defaultColor": "4",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "2586ph1",
@@ -5710,7 +5821,20 @@
     "marvel"
    ],
    "file": "30166",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "mat": [
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
   },
   {
    "id": "30166ps0",
@@ -5720,7 +5844,20 @@
     "marvel"
    ],
    "file": "30166ps0",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "mat": [
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
   },
   {
    "id": "30167",
@@ -9628,7 +9765,14 @@
    "nome": "Sword Katana  3.5 L with Short Smooth Grip and Square Crossguard",
    "tags": [],
    "file": "37341c",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     3.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "37341d",
@@ -9892,7 +10036,25 @@
     "marvel"
    ],
    "file": "3846p40",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     -12.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "3846p44",
@@ -10045,7 +10207,25 @@
     "marvel"
    ],
    "file": "3846p49",
-   "defaultColor": "0"
+   "defaultColor": "0",
+   "grip": {
+    "pos": [
+     0.0,
+     -12.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "3846p4c",
@@ -10308,7 +10488,25 @@
     "marvel"
    ],
    "file": "3846p4m",
-   "defaultColor": "297"
+   "defaultColor": "297",
+   "grip": {
+    "pos": [
+     0.0,
+     -12.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "3846p4n",
@@ -10318,7 +10516,25 @@
     "marvel"
    ],
    "file": "3846p4n",
-   "defaultColor": "4"
+   "defaultColor": "4",
+   "grip": {
+    "pos": [
+     0.0,
+     -12.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "3846p4o",
@@ -10328,7 +10544,25 @@
     "marvel"
    ],
    "file": "3846p4o",
-   "defaultColor": "1"
+   "defaultColor": "1",
+   "grip": {
+    "pos": [
+     0.0,
+     -12.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "3846p4p",
@@ -10338,7 +10572,25 @@
     "marvel"
    ],
    "file": "3846p4p",
-   "defaultColor": "14"
+   "defaultColor": "14",
+   "grip": {
+    "pos": [
+     0.0,
+     -12.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "3846p4q",
@@ -10348,7 +10600,25 @@
     "marvel"
    ],
    "file": "3846p4q",
-   "defaultColor": "14"
+   "defaultColor": "14",
+   "grip": {
+    "pos": [
+     0.0,
+     -12.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "3846p4r",
@@ -10358,7 +10628,25 @@
     "marvel"
    ],
    "file": "3846p4r",
-   "defaultColor": "14"
+   "defaultColor": "14",
+   "grip": {
+    "pos": [
+     0.0,
+     -12.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "3846p4t",
@@ -10424,7 +10712,25 @@
     "marvel"
    ],
    "file": "3846p4x",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     -12.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "3846p4y",
@@ -10434,7 +10740,25 @@
     "marvel"
    ],
    "file": "3846p4y",
-   "defaultColor": "2"
+   "defaultColor": "2",
+   "grip": {
+    "pos": [
+     0.0,
+     -12.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "3846p4z",
@@ -10444,7 +10768,25 @@
     "marvel"
    ],
    "file": "3846p4z",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     -12.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "3846p50",
@@ -10454,7 +10796,25 @@
     "marvel"
    ],
    "file": "3846p50",
-   "defaultColor": "15"
+   "defaultColor": "15",
+   "grip": {
+    "pos": [
+     0.0,
+     -12.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "3846pm0",
@@ -10669,7 +11029,14 @@
    "nome": "Cup with Medium Lilac and Medium Lavender \"I Heart HLC\"",
    "tags": [],
    "file": "3899p07",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     -15.0,
+     -20.0
+    ]
+   }
   },
   {
    "id": "3899p08",
@@ -10677,7 +11044,14 @@
    "nome": "Cup with Black Outlined Marshmallow Face and Yellow and Orange Flames",
    "tags": [],
    "file": "3899p08",
-   "defaultColor": "0"
+   "defaultColor": "0",
+   "grip": {
+    "pos": [
+     0.0,
+     -15.0,
+     -20.0
+    ]
+   }
   },
   {
    "id": "3899p09",
@@ -10685,7 +11059,14 @@
    "nome": "Cup with Reddish Brown \"TVA\" Logo on Metallic Gold Rectangle",
    "tags": [],
    "file": "3899p09",
-   "defaultColor": "70"
+   "defaultColor": "70",
+   "grip": {
+    "pos": [
+     0.0,
+     -15.0,
+     -20.0
+    ]
+   }
   },
   {
    "id": "39144",
@@ -11371,7 +11752,14 @@
    "nome": "Knifes on Sprue",
    "tags": [],
    "file": "44658c01",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "44709",
@@ -11703,7 +12091,14 @@
    "nome": "Tool Octagonal with Opposing Studs and Perpendicular Bars",
    "tags": [],
    "file": "50018d",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     -18.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "50018e",
@@ -11734,7 +12129,14 @@
    "nome": "Tool Circular Tooth Blade with Cover with Opposing Studs and Bar",
    "tags": [],
    "file": "50018g",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     -28.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "50231c02",
@@ -12148,7 +12550,25 @@
     "marvel"
    ],
    "file": "59231p40",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     10.0,
+     -12.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "59231p4h",
@@ -12542,7 +12962,14 @@
    "nome": "Lightsaber Hilt Short Curved Light Bluish Grey - 1 Side On",
    "tags": [],
    "file": "61199c01",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     -13.6,
+     0.0
+    ]
+   }
   },
   {
    "id": "6119b",
@@ -12885,7 +13312,14 @@
    "nome": "Lightsaber Hilt with Slight Sloping Fingers with Bottom Ring",
    "tags": [],
    "file": "64567a",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     -20.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "64567ac01",
@@ -12893,7 +13327,14 @@
    "nome": "Lightsaber with Slight Sloping Fingers with Bottom Ring Chrome Silver - 1 Side On",
    "tags": [],
    "file": "64567ac01",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     -20.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "64567ac02",
@@ -12901,7 +13342,14 @@
    "nome": "Lightsaber with Slight Sloping Fingers with Bottom Ring Chrome Silver - 2 Sides On",
    "tags": [],
    "file": "64567ac02",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     -20.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "64567ac03",
@@ -12909,7 +13357,14 @@
    "nome": "Lightsaber with Slight Sloping Fingers with Bottom Ring Metallic Dark Grey - 1 Side On Bla",
    "tags": [],
    "file": "64567ac03",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     -20.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "64644",
@@ -13135,7 +13590,25 @@
    "nome": "Cup Stein with Handle and Trans Bright Green Drink",
    "tags": [],
    "file": "68495p02",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     21.0,
+     -16.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "68495p03",
@@ -13169,7 +13642,25 @@
    "nome": "Cup Stein with Handle and Dark Brown Drink",
    "tags": [],
    "file": "68495p05",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     21.0,
+     -16.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "69938",
@@ -13232,7 +13723,14 @@
    "nome": "Violin with Silver Strings, Black Fingerboard, F-holes, and Chin Rest",
    "tags": [],
    "file": "69947p01",
-   "defaultColor": "80"
+   "defaultColor": "80",
+   "grip": {
+    "pos": [
+     0.0,
+     26.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "71016",
@@ -13441,7 +13939,25 @@
     "marvel"
    ],
    "file": "75902p05",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "75902p06",
@@ -13451,7 +13967,25 @@
     "marvel"
    ],
    "file": "75902p06",
-   "defaultColor": "297"
+   "defaultColor": "297",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "75902p07",
@@ -13489,7 +14023,25 @@
     "marvel"
    ],
    "file": "75902p08",
-   "defaultColor": "484"
+   "defaultColor": "484",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "75902p09",
@@ -13499,7 +14051,25 @@
     "marvel"
    ],
    "file": "75902p09",
-   "defaultColor": "14"
+   "defaultColor": "14",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "75902p0a",
@@ -13509,7 +14079,25 @@
     "marvel"
    ],
    "file": "75902p0a",
-   "defaultColor": "320"
+   "defaultColor": "320",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "75902p0b",
@@ -13547,7 +14135,25 @@
     "marvel"
    ],
    "file": "75902pb0",
-   "defaultColor": "4"
+   "defaultColor": "4",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "75902pb1",
@@ -13557,7 +14163,25 @@
     "marvel"
    ],
    "file": "75902pb1",
-   "defaultColor": "4"
+   "defaultColor": "4",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "75902pb2",
@@ -13567,7 +14191,25 @@
     "marvel"
    ],
    "file": "75902pb2",
-   "defaultColor": "4"
+   "defaultColor": "4",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "75902ps1",
@@ -14176,7 +14818,25 @@
    "nome": "Whip Bent Flexible (Formed for Electrical Roof Wiring - Right Aligned)",
    "tags": [],
    "file": "88704-f1",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     10.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "88704-f2",
@@ -14184,7 +14844,25 @@
    "nome": "Whip Bent Flexible (Formed for Electrical Roof Wiring - Left Aligned)",
    "tags": [],
    "file": "88704-f2",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     0.0,
+     10.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     1.0,
+     0.0,
+     1.0,
+     0.0,
+     -1.0,
+     0.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "89159",
@@ -14673,7 +15351,25 @@
     "marvel"
    ],
    "file": "92747p02",
-   "defaultColor": "27"
+   "defaultColor": "27",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "92747p03",
@@ -14683,7 +15379,25 @@
     "marvel"
    ],
    "file": "92747p03",
-   "defaultColor": "15"
+   "defaultColor": "15",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "92747p04",
@@ -14693,7 +15407,25 @@
     "marvel"
    ],
    "file": "92747p04",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "92747p05",
@@ -14703,7 +15435,25 @@
     "marvel"
    ],
    "file": "92747p05",
-   "defaultColor": "15"
+   "defaultColor": "15",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "92747p06",
@@ -14713,7 +15463,25 @@
     "marvel"
    ],
    "file": "92747p06",
-   "defaultColor": "71"
+   "defaultColor": "71",
+   "grip": {
+    "pos": [
+     4.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     1.0,
+     0.0,
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "92756",
@@ -21892,7 +22660,25 @@
     "marvel"
    ],
    "file": "98367p01",
-   "defaultColor": "297"
+   "defaultColor": "297",
+   "grip": {
+    "pos": [
+     0.0,
+     -1.0,
+     0.0
+    ],
+    "mat": [
+     0.0,
+     0.0,
+     -1.0,
+     -1.0,
+     0.0,
+     0.0,
+     0.0,
+     1.0,
+     0.0
+    ]
+   }
   },
   {
    "id": "98370",
