@@ -16,6 +16,8 @@
 }
 
 * { box-sizing: border-box; }
+/* o atributo hidden deve vencer qualquer display definido por id/classe */
+[hidden] { display: none !important; }
 html, body { height: 100%; }
 body {
   margin: 0;
