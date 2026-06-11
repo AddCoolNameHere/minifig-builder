@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minifig Builder — monte sua minifig 3D</title>
+  <meta name="description" content="Editor 3D para montar minifigs: escolha peças, troque cores, pose e exporte.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='15' y='35' width='70' height='50' rx='8' fill='%23F2CD37'/><rect x='30' y='20' width='40' height='18' rx='6' fill='%23F2CD37'/></svg>">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header id="toolbar">
+    <div class="logo"><span class="logo-brick"></span><strong>Minifig</strong>&nbsp;Builder</div>
+    <div class="toolbar-actions">
+      <button id="btn-random" class="btn btn-accent" title="Gerar minifig aleatória">🎲 Aleatório</button>
+      <span class="sep"></span>
+      <button id="btn-undo" class="btn btn-icon" title="Desfazer (Ctrl+Z)" disabled>⟲</button>
+      <button id="btn-redo" class="btn btn-icon" title="Refazer (Ctrl+Shift+Z)" disabled>⟳</button>
+      <span class="sep"></span>
+      <button id="btn-save" class="btn" title="Salvar e gerenciar criações">💾 Salvar</button>
+      <button id="btn-png" class="btn" title="Exportar imagem PNG">🖼 PNG</button>
+      <button id="btn-json" class="btn" title="Exportar / importar configuração JSON">⤓ JSON</button>
+      <button id="btn-share" class="btn" title="Copiar link da minifig">🔗 Compartilhar</button>
+    </div>
+  </header>
+
+  <main>
+    <aside id="sidebar" class="drawer">
+      <nav id="tabs" aria-label="Categorias de peças"></nav>
+      <div class="search-wrap">
+        <input id="search" type="search" placeholder="Buscar peça por nome ou tag…" autocomplete="off">
+      </div>
+      <div id="parts-grid" role="listbox"></div>
+    </aside>
+
+    <div id="viewport">
+      <canvas id="c"></canvas>
+      <div id="viewport-hint">arraste para girar · scroll para zoom</div>
+      <div class="mobile-bar">
+        <button id="btn-mobile-parts" class="btn">🧩 Peças</button>
+        <button id="btn-mobile-panel" class="btn">🎨 Cor &amp; Pose</button>
+      </div>
+    </div>
+
+    <aside id="panel" class="drawer">
+      <section class="panel-section">
+        <label class="panel-label" for="fig-name">Nome da minifig</label>
+        <input id="fig-name" type="text" maxlength="40" placeholder="Minha minifig" autocomplete="off">
+      </section>
+      <section class="panel-section">
+        <h3 id="color-title" class="panel-label">Cor</h3>
+        <div id="swatches"></div>
+      </section>
+      <section class="panel-section">
+        <h3 class="panel-label">Pose</h3>
+        <div id="pose-presets"></div>
+        <div id="pose-sliders"></div>
+      </section>
+    </aside>
+  </main>
+
+  <div id="modal-root" hidden></div>
+  <div id="toast" hidden></div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
