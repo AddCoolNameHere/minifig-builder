@@ -136,7 +136,8 @@ export async function createMinifig(config, db) {
 
   // papagaio no ombro
   if (got.pet && partOf('pet')?.file === '2546') {
-    got.pet.position.set(15.5, -7, 0);
+    got.pet.position.set(15.8, -1, 0);
+    got.pet.rotation.y = -0.35;
     ldraw.add(got.pet);
   }
 
