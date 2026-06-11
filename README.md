@@ -6,8 +6,9 @@ A geometria das peças vem do acervo **[LDraw](https://www.ldraw.org/)** — mod
 
 ## Funcionalidades
 
-- **~85 peças oficiais**: 13 cabeças estampadas (3626bp01…), 18 cabelos/chapéus (capacete espacial 3842, elmo 3844 com viseira 3843, bicorne 2528a…), 14 torsos estampados (espacial clássico 973p90, polícia, pirata, cavaleiro, médico, bombeiro…), pernas/curtas/saia, 25 acessórios (espada 3847, mosquete 2561, guitarra 11640…), capa, mochila, tanques, aljava, bases e pets
-- **23 cores oficiais LDraw** (códigos reais: 4, 1, 14… incl. dourado perolado e transparentes)
+- **~2.300 peças oficiais** varridas do acervo inteiro: 373 cabeças estampadas, 523 cabelos/chapéus/capacetes, 749 torsos estampados, 110 pernas (incl. estampadas articuladas), 347 acessórios de mão, 68 itens de corpo e 122 pets — cobrindo temas clássicos (espaço, castelo, piratas, cidade) e licenciados presentes no acervo (Star Wars, Batman/DC, Marvel, LOTR/Hobbit, Harry Potter, Ninjago…), buscáveis por nome e franquia
+- **184 cores oficiais LDraw** agrupadas (sólidas, transparentes, metálicas/peroladas, especiais)
+- **Encaixe oficial na mão**: cada acessório usa a matriz/offset do gerador de minifig do MLCad — o item fica preso no clipe em C como na peça real
 - **Articulação fiel**: cabeça, braços (eixo inclinado oficial), pulsos e pernas independentes
 - **Poses**: presets + sliders finos + pose aleatória
 - **📷 Estúdio fotográfico**: fundos (transparente, branco, preto, gradientes, ciclorama 3D) e presets de iluminação (estúdio, dramática, entardecer, suave, fria) com intensidade ajustável

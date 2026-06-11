@@ -38,20 +38,38 @@ const nameEl = document.getElementById('fig-name');
 const deg = (rad) => Math.round((rad * 180) / Math.PI);
 const rad = (d) => (d * Math.PI) / 180;
 
+const COLOR_GROUPS = [
+  ['solida', 'Sólidas'],
+  ['trans', 'Transparentes'],
+  ['metal', 'Metálicas e peroladas'],
+  ['especial', 'Especiais'],
+];
+
 function renderSwatches() {
   titleEl.textContent = `Cor — ${SLOT_LABELS[activeSlot] || activeSlot}`;
   swatchesEl.innerHTML = '';
   const current = state.config.slots[activeSlot]?.color;
-  for (const c of state.db.colorsList) {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'swatch' + (c.trans ? ' trans' : '') + (c.id === current ? ' selected' : '');
-    b.style.background = c.trans
-      ? `linear-gradient(135deg, ${c.hex}cc, ${c.hex}55)`
-      : c.hex;
-    b.title = c.nome;
-    b.addEventListener('click', () => state.setColor(activeSlot, c.id));
-    swatchesEl.appendChild(b);
+  for (const [grupo, titulo] of COLOR_GROUPS) {
+    const colors = state.db.colorsList.filter((c) => (c.grupo || 'solida') === grupo);
+    if (!colors.length) continue;
+    const title = document.createElement('div');
+    title.className = 'swatch-group-title';
+    title.textContent = titulo;
+    swatchesEl.appendChild(title);
+    const grid = document.createElement('div');
+    grid.className = 'swatch-grid';
+    for (const c of colors) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'swatch' + (c.trans ? ' trans' : '') + (c.id === current ? ' selected' : '');
+      b.style.background = c.trans
+        ? `linear-gradient(135deg, ${c.hex}cc, ${c.hex}55)`
+        : c.hex;
+      b.title = `${c.nome} (${c.id})`;
+      b.addEventListener('click', () => state.setColor(activeSlot, c.id));
+      grid.appendChild(b);
+    }
+    swatchesEl.appendChild(grid);
   }
 }
 

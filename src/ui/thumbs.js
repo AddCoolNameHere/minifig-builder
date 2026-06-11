@@ -39,10 +39,11 @@ async function buildPreviewObject(part) {
     obj = await loadComposite(part.composite, color);
   } else if (part.legs === 'normal') {
     obj = new THREE.Group();
+    const lp = part.legsParts || { hips: '3815b', legR: '3816c', legL: '3817c' };
     const [hips, legR, legL] = await Promise.all([
-      loadPart('3815b', color),
-      loadPart('3816c', color),
-      loadPart('3817c', color),
+      loadPart(lp.hips, color),
+      loadPart(lp.legR, color),
+      loadPart(lp.legL, color),
     ]);
     legR.position.y = 12;
     legL.position.y = 12;

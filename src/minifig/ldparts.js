@@ -20,6 +20,17 @@ const packedTexts = new Map();   // file -> Promise<string>
 const builtCache = new Map();    // `${file}/${color}` -> Promise<Group>
 let wrapperSeq = 0;
 
+// Com milhares de peças no catálogo, o cache precisa de teto: FIFO simples,
+// sem dispose explícito — clones vivos seguram as geometrias; o GC recolhe o resto.
+const MAX_BUILT = 120;
+const MAX_TEXTS = 200;
+
+function capCache(map, max) {
+  while (map.size > max) {
+    map.delete(map.keys().next().value);
+  }
+}
+
 function fetchPacked(file) {
   if (!packedTexts.has(file)) {
     packedTexts.set(
@@ -69,6 +80,8 @@ export async function loadPart(file, colorCode) {
     );
   }
   const built = await builtCache.get(key);
+  capCache(builtCache, MAX_BUILT);
+  capCache(packedTexts, MAX_TEXTS);
   return built.clone();
 }
 

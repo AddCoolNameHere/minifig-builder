@@ -21,7 +21,21 @@ async function buildSlotPart(part, colorCode) {
   const obj = part.composite
     ? await loadComposite(part.composite, colorCode)
     : await loadPart(part.file, colorCode);
-  // correção de orientação no grip (ex.: escudos penduram verticais)
+  // encaixe oficial na mão (extraído do gerador de minifig do MLCad):
+  // matriz de rotação + offset em coordenadas locais da mão
+  if (part.grip) {
+    const wrap = new THREE.Group();
+    const m = part.grip.mat;
+    const [x, y, z] = part.grip.pos || [0, 0, 0];
+    if (m) {
+      wrap.matrix.set(m[0], m[1], m[2], x, m[3], m[4], m[5], y, m[6], m[7], m[8], z, 0, 0, 0, 1);
+      wrap.matrix.decompose(wrap.position, wrap.quaternion, wrap.scale);
+    } else {
+      wrap.position.set(x, y, z);
+    }
+    wrap.add(obj);
+    return wrap;
+  }
   if (part.gripRotX) {
     const wrap = new THREE.Group();
     wrap.rotation.x = (part.gripRotX * Math.PI) / 180;
@@ -54,9 +68,11 @@ export async function createMinifig(config, db) {
     pet: partOf('pet') ? buildSlotPart(partOf('pet'), colorOf('pet')) : null,
   };
   if (legsType === 'normal') {
-    loads.hips = loadPart('3815b', colorOf('legs'));
-    loads.legR = loadPart('3816c', colorOf('legs'));
-    loads.legL = loadPart('3817c', colorOf('legs'));
+    // pernas lisas ou estampadas (composição oficial: quadril + perna D + perna E)
+    const lp = legsPart.legsParts || { hips: '3815b', legR: '3816c', legL: '3817c' };
+    loads.hips = loadPart(lp.hips, colorOf('legs'));
+    loads.legR = loadPart(lp.legR, colorOf('legs'));
+    loads.legL = loadPart(lp.legL, colorOf('legs'));
   } else {
     loads.hipsLegs = buildSlotPart(legsPart, colorOf('legs'));
   }
