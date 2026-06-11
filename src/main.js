@@ -9,6 +9,7 @@ import { initLDraw } from './minifig/ldparts.js';
 import { initSidebar } from './ui/sidebar.js';
 import { initPanel, focusSlot } from './ui/panel.js';
 import { initToolbar, toast } from './ui/toolbar.js';
+import { getPanorama } from './ui/panoramas.js';
 
 const canvas = document.getElementById('c');
 const viewport = document.getElementById('viewport');
@@ -24,8 +25,12 @@ export const FUNDOS = {
   gradiente: { nome: 'Gradiente', css: 'radial-gradient(1200px 700px at 50% 30%, #232b3a 0%, #161a22 55%, #0e1117 100%)', clear: null },
   branco:    { nome: 'Branco',    css: '#e8e8ea', clear: '#e8e8ea' },
   preto:     { nome: 'Preto',     css: '#0a0a0c', clear: '#0a0a0c' },
-  azul:      { nome: 'Azul foto', css: 'linear-gradient(#27354e, #11161f)', clear: null, grad: ['#27354e', '#11161f'] },
   ciclorama: { nome: 'Ciclorama', css: '#1a1d24', clear: null, cyc: true },
+  ceu:        { nome: '🌤 Céu 360°',       pano: 'ceu' },
+  entardecer: { nome: '🌇 Entardecer 360°', pano: 'entardecer' },
+  noite:      { nome: '🌙 Noite 360°',      pano: 'noite' },
+  espaco:     { nome: '🌌 Espaço 360°',     pano: 'espaco' },
+  estudio360: { nome: '💡 Estúdio 360°',    pano: 'estudio360' },
 };
 
 export const LUZES = {
@@ -42,9 +47,14 @@ function applyStudio() {
   const luz = LUZES[s.luz] || LUZES.estudio;
   const k = s.intensidade ?? 1;
 
-  // fundo
-  viewport.style.background = fundo.css;
-  scene.background = null;
+  // fundo: panorama 360° (esfera ao redor da cena) ou plano
+  if (fundo.pano) {
+    scene.background = getPanorama(fundo.pano);
+    viewport.style.background = '#000';
+  } else {
+    scene.background = null;
+    viewport.style.background = fundo.css;
+  }
   if (cyclorama) cyclorama.visible = !!fundo.cyc;
 
   // luzes
@@ -158,9 +168,18 @@ function resize() {
 /* ---------------- reconstrução assíncrona ---------------- */
 
 let buildSeq = 0;
+let pendingBuilds = 0;
+
+function setBuildPill(on) {
+  const pill = document.getElementById('build-pill');
+  if (pill) pill.hidden = !on;
+}
 
 async function rebuild() {
   const seq = ++buildSeq;
+  pendingBuilds++;
+  // só mostra o indicador se a montagem demorar de verdade
+  const pillTimer = setTimeout(() => setBuildPill(true), 180);
   try {
     const next = await createMinifig(state.config, state.db);
     if (seq !== buildSeq) return; // outra reconstrução mais nova já chegou
@@ -171,6 +190,9 @@ async function rebuild() {
   } catch (err) {
     console.error('falha ao montar minifig:', err);
     toast('Erro ao carregar peça 😕');
+  } finally {
+    clearTimeout(pillTimer);
+    if (--pendingBuilds === 0) setBuildPill(false);
   }
 }
 
@@ -214,16 +236,19 @@ function renderShot(w, h, { transparent = true } = {}) {
   renderer.setSize(w, h, false);
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
-  let bg = null;
-  if (!transparent) {
-    bg = currentBackgroundForExport();
-    scene.background = bg;
+  const prevBg = scene.background; // pode ser um panorama 360°
+  let tempBg = null;
+  if (transparent) {
+    scene.background = null;
+  } else if (!prevBg) {
+    tempBg = currentBackgroundForExport();
+    scene.background = tempBg;
   }
   renderer.render(scene, camera);
   const url = renderer.domElement.toDataURL('image/png');
 
-  scene.background = null;
-  if (bg?.dispose) bg.dispose();
+  scene.background = prevBg;
+  if (tempBg?.dispose) tempBg.dispose();
   renderer.setPixelRatio(prevRatio);
   renderer.setSize(prevW / prevRatio, prevH / prevRatio, false);
   camera.aspect = prevAspect;
@@ -243,12 +268,14 @@ function captureThumb() {
 /* ---------------- boot ---------------- */
 
 async function boot() {
+  const bootLoader = document.getElementById('boot-loader');
   try {
     await Promise.all([state.loadData(), initLDraw()]);
   } catch (err) {
-    document.body.innerHTML = `<div style="display:grid;place-items:center;height:100vh;color:#e8eaef;font-family:sans-serif;text-align:center;padding:20px">
-      <div><h2>Não foi possível carregar o catálogo de peças 😕</h2>
-      <p>Sirva o app por HTTP (ex.: <code>python3 -m http.server</code>) — abrir o arquivo direto não funciona.</p></div></div>`;
+    bootLoader.innerHTML = `<div style="text-align:center;padding:20px;color:#e8eaef">
+      <h2>Não foi possível carregar o catálogo de peças 😕</h2>
+      <p style="color:#9aa1ad">Sirva o app por HTTP (ex.: <code>python3 -m http.server</code>) — abrir o arquivo direto não funciona.<br>
+      Detalhe: ${String(err?.message || err)}</p></div>`;
     throw err;
   }
 
@@ -263,8 +290,12 @@ async function boot() {
   state.initConfig(initial);
 
   initScene();
-  rebuild();
   animate();
+  // some o overlay quando a primeira minifig estiver montada
+  rebuild().finally(() => {
+    bootLoader.classList.add('done');
+    setTimeout(() => bootLoader.remove(), 450);
+  });
 
   initSidebar({ onFocusSlot: focusSlot });
   initPanel();
