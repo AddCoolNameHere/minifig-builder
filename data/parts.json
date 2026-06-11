@@ -5,8 +5,8 @@
    "categoria": "cabeca",
    "nome": "Sorriso clássico",
    "tags": [
-    "feliz",
     "classico",
+    "feliz",
     "smiley"
    ],
    "file": "3626bp01",
@@ -17,9 +17,9 @@
    "categoria": "cabeca",
    "nome": "Rosto feminino clássico",
    "tags": [
-    "mulher",
+    "batom",
     "classico",
-    "batom"
+    "mulher"
    ],
    "file": "3626bp02",
    "defaultColor": "14"
@@ -30,6 +30,7 @@
    "nome": "Sorriso com bigode fino",
    "tags": [
     "bigode",
+    "lotr",
     "retro"
    ],
    "file": "3626bp03",
@@ -40,9 +41,9 @@
    "categoria": "cabeca",
    "nome": "Óculos escuros",
    "tags": [
+    "estiloso",
     "oculos",
-    "sol",
-    "estiloso"
+    "sol"
    ],
    "file": "3626bp04",
    "defaultColor": "14"
@@ -63,9 +64,9 @@
    "categoria": "cabeca",
    "nome": "Batom e sobrancelhas",
    "tags": [
-    "mulher",
     "batom",
-    "maquiagem"
+    "maquiagem",
+    "mulher"
    ],
    "file": "3626bp08",
    "defaultColor": "14"
@@ -98,8 +99,8 @@
    "categoria": "cabeca",
    "nome": "Óculos, barba e bigode",
    "tags": [
-    "oculos",
     "barba",
+    "oculos",
     "professor"
    ],
    "file": "3626bp0e",
@@ -111,8 +112,8 @@
    "nome": "Bravo",
    "tags": [
     "raiva",
-    "vilao",
-    "serio"
+    "serio",
+    "vilao"
    ],
    "file": "3626bp0f",
    "defaultColor": "14"
@@ -122,9 +123,9 @@
    "categoria": "cabeca",
    "nome": "Óculos e sorriso aberto",
    "tags": [
-    "oculos",
     "feliz",
-    "nerd"
+    "nerd",
+    "oculos"
    ],
    "file": "3626bp0i",
    "defaultColor": "14"
@@ -135,8 +136,9 @@
    "nome": "Caveira",
    "tags": [
     "esqueleto",
+    "fantasma",
     "halloween",
-    "fantasma"
+    "monstros"
    ],
    "file": "3626bpa8",
    "defaultColor": "15"
@@ -146,9 +148,10 @@
    "categoria": "cabeca",
    "nome": "Robô prateado",
    "tags": [
-    "robo",
+    "androide",
     "maquina",
-    "androide"
+    "monstros",
+    "robo"
    ],
    "file": "3626bp63",
    "defaultColor": "71"
@@ -181,8 +184,8 @@
    "nome": "Maria-chiquinha",
    "tags": [
     "cabelo",
-    "tranca",
-    "pigtails"
+    "pigtails",
+    "tranca"
    ],
    "file": "3625",
    "defaultColor": "0"
@@ -214,9 +217,9 @@
    "categoria": "chapeu",
    "nome": "Boné",
    "tags": [
+    "aba",
     "chapeu",
-    "esporte",
-    "aba"
+    "esporte"
    ],
    "file": "4485b",
    "defaultColor": "1"
@@ -227,8 +230,9 @@
    "nome": "Quepe de polícia",
    "tags": [
     "chapeu",
-    "policia",
-    "oficial"
+    "cidade",
+    "oficial",
+    "policia"
    ],
    "file": "3624",
    "defaultColor": "0"
@@ -238,9 +242,9 @@
    "categoria": "chapeu",
    "nome": "Capacete espacial clássico",
    "tags": [
+    "astronauta",
     "capacete",
-    "espaco",
-    "astronauta"
+    "espaco"
    ],
    "file": "3842b",
    "defaultColor": "15"
@@ -282,6 +286,7 @@
    "nome": "Capacete de obra",
    "tags": [
     "capacete",
+    "cidade",
     "construcao",
     "obra"
    ],
@@ -294,8 +299,8 @@
    "nome": "Elmo de cavaleiro",
    "tags": [
     "capacete",
-    "medieval",
-    "castelo"
+    "castelo",
+    "medieval"
    ],
    "file": "3844",
    "defaultColor": "71"
@@ -336,9 +341,9 @@
    "categoria": "chapeu",
    "nome": "Chapéu de pirata (bicorne)",
    "tags": [
+    "capitao",
     "chapeu",
-    "pirata",
-    "capitao"
+    "pirata"
    ],
    "file": "2528a",
    "defaultColor": "0"
@@ -348,7 +353,6 @@
    "categoria": "chapeu",
    "nome": "Bandana",
    "tags": [
-    "pirata",
     "lenco"
    ],
    "file": "30133",
@@ -360,8 +364,8 @@
    "nome": "Chapéu de caubói",
    "tags": [
     "chapeu",
-    "oeste",
-    "faroeste"
+    "faroeste",
+    "oeste"
    ],
    "file": "3629",
    "defaultColor": "70"
@@ -372,8 +376,8 @@
    "nome": "Chapéu de mago",
    "tags": [
     "chapeu",
-    "magia",
-    "feiticeiro"
+    "feiticeiro",
+    "magia"
    ],
    "file": "6131",
    "defaultColor": "272"
@@ -383,9 +387,9 @@
    "categoria": "chapeu",
    "nome": "Coroa",
    "tags": [
-    "rei",
     "rainha",
-    "realeza"
+    "realeza",
+    "rei"
    ],
    "file": "71015",
    "defaultColor": "297"
@@ -395,8 +399,9 @@
    "categoria": "chapeu",
    "nome": "Capacete de bombeiro",
    "tags": [
-    "capacete",
     "bombeiro",
+    "capacete",
+    "cidade",
     "fogo"
    ],
    "file": "3834",
@@ -419,8 +424,8 @@
    "categoria": "torso",
    "nome": "Liso",
    "tags": [
-    "simples",
-    "basico"
+    "basico",
+    "simples"
    ],
    "file": "973",
    "defaultColor": "4"
@@ -431,8 +436,9 @@
    "nome": "Terno com gravata",
    "tags": [
     "formal",
-    "trabalho",
-    "negocio"
+    "negocio",
+    "star wars",
+    "trabalho"
    ],
    "file": "973p18",
    "defaultColor": "15"
@@ -442,9 +448,9 @@
    "categoria": "torso",
    "nome": "Camisa havaiana",
    "tags": [
-    "praia",
     "ferias",
-    "flores"
+    "flores",
+    "praia"
    ],
    "file": "973p5l",
    "defaultColor": "15"
@@ -465,9 +471,10 @@
    "categoria": "torso",
    "nome": "Uniforme de polícia",
    "tags": [
-    "policia",
+    "cidade",
+    "lei",
     "oficial",
-    "lei"
+    "policia"
    ],
    "file": "973p1f",
    "defaultColor": "0"
@@ -477,8 +484,9 @@
    "categoria": "torso",
    "nome": "Uniforme espacial clássico",
    "tags": [
-    "espaco",
     "astronauta",
+    "espaco",
+    "espaco classico",
     "planeta"
    ],
    "file": "973p90",
@@ -489,9 +497,9 @@
    "categoria": "torso",
    "nome": "Listras de pirata",
    "tags": [
-    "pirata",
     "listras",
-    "mar"
+    "mar",
+    "pirata"
    ],
    "file": "973p31",
    "defaultColor": "15"
@@ -501,9 +509,9 @@
    "categoria": "torso",
    "nome": "Capitão pirata",
    "tags": [
-    "pirata",
     "capitao",
-    "casaco"
+    "casaco",
+    "pirata"
    ],
    "file": "973p36",
    "defaultColor": "0"
@@ -513,9 +521,9 @@
    "categoria": "torso",
    "nome": "Armadura de cavaleiro",
    "tags": [
-    "medieval",
     "armadura",
-    "castelo"
+    "castelo",
+    "medieval"
    ],
    "file": "973p40",
    "defaultColor": "71"
@@ -525,9 +533,9 @@
    "categoria": "torso",
    "nome": "Macacão com alças",
    "tags": [
-    "obra",
     "fazenda",
-    "jardineiro"
+    "jardineiro",
+    "obra"
    ],
    "file": "973p0e",
    "defaultColor": "15"
@@ -537,8 +545,8 @@
    "categoria": "torso",
    "nome": "Médico (cruz e estetoscópio)",
    "tags": [
-    "medico",
     "hospital",
+    "medico",
     "saude"
    ],
    "file": "973p25",
@@ -550,6 +558,7 @@
    "nome": "Casaco de bombeiro",
    "tags": [
     "bombeiro",
+    "cidade",
     "fogo",
     "resgate"
    ],
@@ -561,9 +570,9 @@
    "categoria": "torso",
    "nome": "Jaqueta xadrez",
    "tags": [
-    "xadrez",
+    "casual",
     "lenhador",
-    "casual"
+    "xadrez"
    ],
    "file": "973p0l",
    "defaultColor": "4"
@@ -573,9 +582,9 @@
    "categoria": "torso",
    "nome": "Prisioneiro",
    "tags": [
+    "fugitivo",
     "listras",
-    "prisao",
-    "fugitivo"
+    "prisao"
    ],
    "file": "973p7k",
    "defaultColor": "15"
@@ -605,8 +614,8 @@
    "categoria": "pernas",
    "nome": "Pernas clássicas",
    "tags": [
-    "simples",
-    "basico"
+    "basico",
+    "simples"
    ],
    "legs": "normal",
    "defaultColor": "1"
@@ -616,8 +625,8 @@
    "categoria": "pernas",
    "nome": "Pernas curtas",
    "tags": [
-    "crianca",
-    "baixo"
+    "baixo",
+    "crianca"
    ],
    "legs": "short",
    "file": "41879a",
@@ -641,8 +650,7 @@
    "nome": "Espada curta",
    "tags": [
     "arma",
-    "medieval",
-    "castelo"
+    "medieval"
    ],
    "file": "3847",
    "defaultColor": "71",
@@ -660,8 +668,8 @@
    "nome": "Sabre de pirata",
    "tags": [
     "arma",
-    "pirata",
-    "cutlass"
+    "cutlass",
+    "pirata"
    ],
    "file": "2530",
    "defaultColor": "71",
@@ -698,8 +706,8 @@
    "nome": "Lâmina de energia",
    "tags": [
     "arma",
-    "espaco",
     "brilho",
+    "espaco",
     "laser"
    ],
    "composite": [
@@ -730,9 +738,9 @@
    "categoria": "acessorio",
    "nome": "Machado",
    "tags": [
+    "arma",
     "ferramenta",
-    "lenhador",
-    "arma"
+    "lenhador"
    ],
    "file": "3835",
    "defaultColor": "71",
@@ -836,8 +844,8 @@
    "nome": "Pá",
    "tags": [
     "ferramenta",
-    "obra",
-    "jardim"
+    "jardim",
+    "obra"
    ],
    "file": "3837",
    "defaultColor": "0",
@@ -873,9 +881,8 @@
    "categoria": "acessorio",
    "nome": "Mosquete",
    "tags": [
-    "arma",
-    "pirata",
-    "antigo"
+    "antigo",
+    "arma"
    ],
    "file": "2561",
    "defaultColor": "70",
@@ -903,9 +910,9 @@
    "categoria": "acessorio",
    "nome": "Lanterna espacial",
    "tags": [
-    "luz",
     "espaco",
-    "ferramenta"
+    "ferramenta",
+    "luz"
    ],
    "file": "3959",
    "defaultColor": "71",
@@ -922,8 +929,8 @@
    "categoria": "acessorio",
    "nome": "Maleta",
    "tags": [
-    "trabalho",
     "negocio",
+    "trabalho",
     "viagem"
    ],
    "file": "4449-f1",
@@ -947,9 +954,9 @@
    "categoria": "acessorio",
    "nome": "Guitarra elétrica",
    "tags": [
+    "banda",
     "musica",
-    "rock",
-    "banda"
+    "rock"
    ],
    "file": "11640",
    "defaultColor": "4",
@@ -977,9 +984,9 @@
    "categoria": "acessorio",
    "nome": "Microfone",
    "tags": [
+    "cantar",
     "musica",
-    "show",
-    "cantar"
+    "show"
    ],
    "file": "90370",
    "defaultColor": "0",
@@ -1025,9 +1032,9 @@
    "categoria": "acessorio",
    "nome": "Câmera de cinema",
    "tags": [
+    "diretor",
     "filme",
-    "video",
-    "diretor"
+    "video"
    ],
    "file": "30148",
    "defaultColor": "0"
@@ -1038,8 +1045,8 @@
    "nome": "Binóculos",
    "tags": [
     "explorar",
-    "ver",
-    "safari"
+    "safari",
+    "ver"
    ],
    "file": "30162",
    "defaultColor": "0",
@@ -1078,9 +1085,9 @@
    "categoria": "acessorio",
    "nome": "Peixe",
    "tags": [
+    "comida",
     "mar",
-    "pesca",
-    "comida"
+    "pesca"
    ],
    "file": "64648",
    "defaultColor": "71"
@@ -1101,8 +1108,8 @@
    "categoria": "acessorio",
    "nome": "Panela",
    "tags": [
-    "cozinha",
-    "chef"
+    "chef",
+    "cozinha"
    ],
    "file": "4529",
    "defaultColor": "0",
@@ -1131,6 +1138,7 @@
    "nome": "Escudo redondo",
    "tags": [
     "defesa",
+    "marvel",
     "medieval",
     "viking"
    ],
@@ -1160,9 +1168,10 @@
    "categoria": "acessorio",
    "nome": "Escudo triangular",
    "tags": [
+    "cavaleiro",
     "defesa",
-    "medieval",
-    "cavaleiro"
+    "marvel",
+    "medieval"
    ],
    "file": "3846",
    "defaultColor": "1",
@@ -1203,8 +1212,8 @@
    "nome": "Mochila",
    "tags": [
     "aventura",
-    "trilha",
-    "escola"
+    "escola",
+    "trilha"
    ],
    "file": "2524",
    "defaultColor": "70"
@@ -1214,9 +1223,9 @@
    "categoria": "corpo",
    "nome": "Tanque de oxigênio duplo",
    "tags": [
+    "astronauta",
     "espaco",
-    "mergulho",
-    "astronauta"
+    "mergulho"
    ],
    "file": "3838",
    "defaultColor": "15"
@@ -1226,8 +1235,8 @@
    "categoria": "corpo",
    "nome": "Aljava de flechas",
    "tags": [
-    "flechas",
     "arqueiro",
+    "flechas",
     "floresta"
    ],
    "file": "4498",
@@ -1264,9 +1273,9 @@
    "sub": "pet",
    "nome": "Cachorro (terrier)",
    "tags": [
-    "pet",
     "animal",
-    "cao"
+    "cao",
+    "pet"
    ],
    "file": "26078",
    "defaultColor": "15"
@@ -1277,9 +1286,10 @@
    "sub": "pet",
    "nome": "Gato",
    "tags": [
-    "pet",
     "animal",
-    "felino"
+    "castelo",
+    "felino",
+    "pet"
    ],
    "file": "13786",
    "defaultColor": "72"
@@ -1290,9 +1300,8 @@
    "sub": "pet",
    "nome": "Papagaio no ombro",
    "tags": [
-    "pet",
     "ave",
-    "pirata"
+    "pet"
    ],
    "file": "2546",
    "defaultColor": "4"
@@ -1386,8 +1395,8 @@
    "categoria": "chapeu",
    "nome": "Helmet Castle Uruk-Hai with Lateral Comb",
    "tags": [
-    "lotr",
-    "castelo"
+    "castelo",
+    "lotr"
    ],
    "file": "10051",
    "defaultColor": "71"
@@ -1397,8 +1406,8 @@
    "categoria": "chapeu",
    "nome": "Helmet Castle Uruk-Hai with Lateral Comb & Hand",
    "tags": [
-    "lotr",
-    "castelo"
+    "castelo",
+    "lotr"
    ],
    "file": "10051p01",
    "defaultColor": "71"
@@ -1423,8 +1432,8 @@
    "categoria": "chapeu",
    "nome": "Helmet Castle Rohan with Cheek Protection & Comb",
    "tags": [
-    "lotr",
-    "castelo"
+    "castelo",
+    "lotr"
    ],
    "file": "10054",
    "defaultColor": "71"
@@ -1434,8 +1443,8 @@
    "categoria": "chapeu",
    "nome": "Helmet Castle Rohan with Cheek Protection & Comb with Eomer",
    "tags": [
-    "lotr",
-    "castelo"
+    "castelo",
+    "lotr"
    ],
    "file": "10054p01",
    "defaultColor": "71"
@@ -1445,8 +1454,8 @@
    "categoria": "chapeu",
    "nome": "Helmet Castle Rohan with Cheek Protection & Comb with Théoden",
    "tags": [
-    "lotr",
-    "castelo"
+    "castelo",
+    "lotr"
    ],
    "file": "10054p02",
    "defaultColor": "71"
@@ -1593,7 +1602,9 @@
    "id": "102498",
    "categoria": "acessorio",
    "nome": "Tool Wand with Hollow Stud at Tip",
-   "tags": [],
+   "tags": [
+    "harry potter"
+   ],
    "file": "102498",
    "defaultColor": "71"
   },
@@ -1601,7 +1612,9 @@
    "id": "102498p01",
    "categoria": "acessorio",
    "nome": "Tool Wand with Trans Clear Hollow Stud at Tip",
-   "tags": [],
+   "tags": [
+    "harry potter"
+   ],
    "file": "102498p01",
    "defaultColor": "71"
   },
@@ -1860,7 +1873,9 @@
    "id": "11418",
    "categoria": "chapeu",
    "nome": "Headdress Bald with Large Pointed Ears",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "11418",
    "defaultColor": "0"
   },
@@ -2439,7 +2454,9 @@
    "id": "13952",
    "categoria": "acessorio",
    "nome": "Gun Laser Kryptonian",
-   "tags": [],
+   "tags": [
+    "dc batman"
+   ],
    "file": "13952",
    "defaultColor": "71",
    "grip": {
@@ -2689,7 +2706,9 @@
    "id": "15446",
    "categoria": "chapeu",
    "nome": "Helmet Visor with Night Vision",
-   "tags": [],
+   "tags": [
+    "marvel"
+   ],
    "file": "15446",
    "defaultColor": "71"
   },
@@ -3389,6 +3408,7 @@
    "categoria": "chapeu",
    "nome": "Helmet SW Stormtrooper Episode  8 with Pointed Mouth",
    "tags": [
+    "lotr",
     "star wars"
    ],
    "file": "20904ps0",
@@ -3399,6 +3419,7 @@
    "categoria": "chapeu",
    "nome": "Helmet SW Stormtrooper Executioner Episode  8 with Pointed Mouth and Right Sided Black Str",
    "tags": [
+    "lotr",
     "star wars"
    ],
    "file": "20904ps1",
@@ -3642,7 +3663,9 @@
    "id": "23922",
    "categoria": "acessorio",
    "nome": "Gun Shooting Blaster with Socket Joint-8 with Friction",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "23922",
    "defaultColor": "71"
   },
@@ -3650,7 +3673,9 @@
    "id": "23922c01",
    "categoria": "acessorio",
    "nome": "Gun Shooting Blaster with Socket Joint-8 with Dark Bluish Grey Trigger",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "23922c01",
    "defaultColor": "71"
   },
@@ -3658,7 +3683,9 @@
    "id": "23922c02",
    "categoria": "acessorio",
    "nome": "Gun Shooting Blaster with Socket Joint-8 with Dark Bluish Grey Trigger and Trans Orange Pr",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "23922c02",
    "defaultColor": "71"
   },
@@ -3941,8 +3968,8 @@
    "categoria": "chapeu",
    "nome": "Hat Bicorne with White Evil Skull and Crossbones",
    "tags": [
-    "pirata",
-    "monstros"
+    "monstros",
+    "pirata"
    ],
    "file": "2528ap30",
    "defaultColor": "15"
@@ -3952,8 +3979,8 @@
    "categoria": "chapeu",
    "nome": "Hat Bicorne with Small Rounded Skull and Crossbones",
    "tags": [
-    "pirata",
-    "monstros"
+    "monstros",
+    "pirata"
    ],
    "file": "2528ap31",
    "defaultColor": "0"
@@ -3973,8 +4000,8 @@
    "categoria": "chapeu",
    "nome": "Hat Bicorne with Metallic Gold Skull and Crossbones and Dots",
    "tags": [
-    "pirata",
-    "monstros"
+    "monstros",
+    "pirata"
    ],
    "file": "2528ap33",
    "defaultColor": "0"
@@ -3984,8 +4011,8 @@
    "categoria": "chapeu",
    "nome": "Hat Bicorne with Minifigure Skull and Crossed Spanners",
    "tags": [
-    "pirata",
-    "monstros"
+    "monstros",
+    "pirata"
    ],
    "file": "2528ap34",
    "defaultColor": "0"
@@ -4005,8 +4032,8 @@
    "categoria": "chapeu",
    "nome": "Hat Bicorne with White Slanted Skull with X Eyes and Crossbones",
    "tags": [
-    "pirata",
-    "monstros"
+    "monstros",
+    "pirata"
    ],
    "file": "2528ap36",
    "defaultColor": "15"
@@ -4016,8 +4043,8 @@
    "categoria": "chapeu",
    "nome": "Hat Bicorne with White Slanted Skull with Eyepatch and Crossed Spanners",
    "tags": [
-    "pirata",
-    "monstros"
+    "monstros",
+    "pirata"
    ],
    "file": "2528ap37",
    "defaultColor": "15"
@@ -4037,8 +4064,8 @@
    "categoria": "chapeu",
    "nome": "Hat Bicorne with Large Square Skull with Crossbones Behind and Red Line",
    "tags": [
-    "pirata",
-    "monstros"
+    "monstros",
+    "pirata"
    ],
    "file": "2528ap39",
    "defaultColor": "0"
@@ -4048,8 +4075,8 @@
    "categoria": "chapeu",
    "nome": "Hat Bicorne with Corrugated Metallic Silver Minifigure Skull and Crossed Spanners on Dark ",
    "tags": [
-    "pirata",
-    "monstros"
+    "monstros",
+    "pirata"
    ],
    "file": "2528ap3a",
    "defaultColor": "0"
@@ -4059,8 +4086,8 @@
    "categoria": "chapeu",
    "nome": "Hat Bicorne with White Skull and Crossed Cutlasses",
    "tags": [
-    "pirata",
-    "monstros"
+    "monstros",
+    "pirata"
    ],
    "file": "2528ap3b",
    "defaultColor": "15"
@@ -4080,8 +4107,9 @@
    "categoria": "chapeu",
    "nome": "Hat Bicorne with Squared Skull and Crossbones",
    "tags": [
-    "pirata",
-    "monstros"
+    "marvel",
+    "monstros",
+    "pirata"
    ],
    "file": "2528ap3d",
    "defaultColor": "0"
@@ -4171,7 +4199,6 @@
    "categoria": "chapeu",
    "nome": "Hat Imperial Guard Shako",
    "tags": [
-    "star wars",
     "pirata"
    ],
    "file": "2545",
@@ -4182,7 +4209,6 @@
    "categoria": "chapeu",
    "nome": "Hat Imperial Guard Shako with Red Plume and Gold Badge",
    "tags": [
-    "star wars",
     "pirata"
    ],
    "file": "2545p01",
@@ -4416,8 +4442,8 @@
    "categoria": "acessorio",
    "nome": "Shield Ovoid with Royal Knights Lion",
    "tags": [
-    "marvel",
-    "castelo"
+    "castelo",
+    "marvel"
    ],
    "file": "2586p4d",
    "defaultColor": "71",
@@ -4624,8 +4650,8 @@
    "categoria": "acessorio",
    "nome": "Shield Ovoid with Red Fire Breathing Dragon Head on Black Background",
    "tags": [
-    "marvel",
-    "cidade"
+    "cidade",
+    "marvel"
    ],
    "file": "2586p4n",
    "defaultColor": "4"
@@ -4691,8 +4717,8 @@
    "categoria": "acessorio",
    "nome": "Shield Ovoid with SW Gungan Patrol Shield",
    "tags": [
-    "star wars",
-    "marvel"
+    "marvel",
+    "star wars"
    ],
    "file": "2586ps1",
    "defaultColor": "71",
@@ -4720,8 +4746,7 @@
    "categoria": "acessorio",
    "nome": "Shield Ovoid with American Indian",
    "tags": [
-    "marvel",
-    "faroeste"
+    "marvel"
    ],
    "file": "2586pw1",
    "defaultColor": "71",
@@ -4785,8 +4810,8 @@
    "categoria": "corpo",
    "nome": "Armour Plate with LOTR King Theoden",
    "tags": [
-    "lotr",
-    "castelo"
+    "castelo",
+    "lotr"
    ],
    "file": "2587pm0",
    "defaultColor": "15"
@@ -4795,7 +4820,9 @@
    "id": "2594a",
    "categoria": "chapeu",
    "nome": "Helmet Visor Pointed with Rounded Nose",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "2594a",
    "defaultColor": "71"
   },
@@ -4803,7 +4830,9 @@
    "id": "2594b",
    "categoria": "chapeu",
    "nome": "Helmet Visor Pointed with Squared Nose",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "2594b",
    "defaultColor": "71"
   },
@@ -5297,7 +5326,9 @@
    "id": "29580",
    "categoria": "chapeu",
    "nome": "Headdress Rocket Costume",
-   "tags": [],
+   "tags": [
+    "marvel"
+   ],
    "file": "29580",
    "defaultColor": "0"
   },
@@ -5305,7 +5336,9 @@
    "id": "29580p01",
    "categoria": "chapeu",
    "nome": "Headdress Rocket Costume with Red Top, Visor and Base and Rivets",
-   "tags": [],
+   "tags": [
+    "marvel"
+   ],
    "file": "29580p01",
    "defaultColor": "4"
   },
@@ -5427,9 +5460,7 @@
    "id": "30113",
    "categoria": "chapeu",
    "nome": "Headdress American Indian Buffalo Horned",
-   "tags": [
-    "faroeste"
-   ],
+   "tags": [],
    "file": "30113",
    "defaultColor": "0"
   },
@@ -5542,7 +5573,9 @@
    "id": "30124bp51",
    "categoria": "chapeu",
    "nome": "Helmet Standard with Black, Blue and Silver Unitron",
-   "tags": [],
+   "tags": [
+    "espaco classico"
+   ],
    "file": "30124bp51",
    "defaultColor": "0"
   },
@@ -5573,9 +5606,7 @@
    "id": "30138",
    "categoria": "chapeu",
    "nome": "Headdress American Indian Warbonnet",
-   "tags": [
-    "faroeste"
-   ],
+   "tags": [],
    "file": "30138",
    "defaultColor": "0"
   },
@@ -5583,9 +5614,7 @@
    "id": "30138p01",
    "categoria": "chapeu",
    "nome": "Headdress American Indian Warbonnet with Coloured Feathers",
-   "tags": [
-    "faroeste"
-   ],
+   "tags": [],
    "file": "30138p01",
    "defaultColor": "0"
   },
@@ -5997,6 +6026,7 @@
    "categoria": "chapeu",
    "nome": "Helmet SW Mandalorian with Rocket Pack",
    "tags": [
+    "marvel",
     "star wars"
    ],
    "file": "30380",
@@ -6007,6 +6037,7 @@
    "categoria": "chapeu",
    "nome": "Helmet SW Mandalorian with Rocket Pack and Dark Red Boba Fett Colours",
    "tags": [
+    "marvel",
     "star wars"
    ],
    "file": "30380p01",
@@ -6017,6 +6048,7 @@
    "categoria": "chapeu",
    "nome": "Helmet SW Mandalorian with Rocket Pack and Blue Jango Fett Colours",
    "tags": [
+    "marvel",
     "star wars"
    ],
    "file": "30380p02",
@@ -6027,6 +6059,7 @@
    "categoria": "chapeu",
    "nome": "Helmet SW Mandalorian with Rocket Pack and Dark Brown Boba Fett Colours",
    "tags": [
+    "marvel",
     "star wars"
    ],
    "file": "30380p03",
@@ -6093,8 +6126,8 @@
    "categoria": "chapeu",
    "nome": "Headdress SW Royal Guard",
    "tags": [
-    "star wars",
-    "castelo"
+    "castelo",
+    "star wars"
    ],
    "file": "30561",
    "defaultColor": "0"
@@ -6372,7 +6405,9 @@
    "id": "35759",
    "categoria": "chapeu",
    "nome": "Headdress Fireworks Rocket Costume",
-   "tags": [],
+   "tags": [
+    "marvel"
+   ],
    "file": "35759",
    "defaultColor": "0"
   },
@@ -6652,7 +6687,9 @@
    "id": "3626bp4c",
    "categoria": "cabeca",
    "nome": "Moustache, Frown and Pointed Hairline",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "3626bp4c",
    "defaultColor": "14"
   },
@@ -7774,8 +7811,8 @@
    "categoria": "cabeca",
    "nome": "SW Alien with Large Black Eyes",
    "tags": [
-    "star wars",
-    "monstros"
+    "monstros",
+    "star wars"
    ],
    "file": "3626bpsb",
    "defaultColor": "71"
@@ -7976,7 +8013,9 @@
    "id": "3626bpw8",
    "categoria": "cabeca",
    "nome": "Glasses, Pencil Behind Ear and Pointed Moustache",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "3626bpw8",
    "defaultColor": "14"
   },
@@ -9133,8 +9172,8 @@
    "categoria": "cabeca",
    "nome": "LOTR Smirking / Shouting 2-Sided",
    "tags": [
-    "lotr",
-    "castelo"
+    "castelo",
+    "lotr"
    ],
    "file": "3626cpm8",
    "defaultColor": "14"
@@ -9259,7 +9298,9 @@
    "id": "3626cps3",
    "categoria": "cabeca",
    "nome": "Black Eyebrows, White Pupils, Dark Nougat Cheek Lines and Dimple and Grimacing",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "3626cps3",
    "defaultColor": "14"
   },
@@ -9359,7 +9400,9 @@
    "id": "3626cpx4",
    "categoria": "cabeca",
    "nome": "Full Black Beard with Side Burns, White Pupils, Open Mouth Grimace",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "3626cpx4",
    "defaultColor": "14"
   },
@@ -9459,7 +9502,9 @@
    "id": "36752a",
    "categoria": "acessorio",
    "nome": "Tool Wand",
-   "tags": [],
+   "tags": [
+    "harry potter"
+   ],
    "file": "36752a",
    "defaultColor": "71",
    "grip": {
@@ -9474,7 +9519,9 @@
    "id": "36752b",
    "categoria": "acessorio",
    "nome": "Tool Wand Sprue",
-   "tags": [],
+   "tags": [
+    "harry potter"
+   ],
    "file": "36752b",
    "defaultColor": "71"
   },
@@ -9482,7 +9529,9 @@
    "id": "36752c",
    "categoria": "acessorio",
    "nome": "Tool Wand Sprue without Arch",
-   "tags": [],
+   "tags": [
+    "harry potter"
+   ],
    "file": "36752c",
    "defaultColor": "71"
   },
@@ -9691,7 +9740,9 @@
    "id": "38301",
    "categoria": "corpo",
    "nome": "Cape Cloth Scalloped  6 Points",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "38301",
    "defaultColor": "15"
   },
@@ -9699,7 +9750,9 @@
    "id": "38301c01",
    "categoria": "corpo",
    "nome": "Cape Cloth Scalloped  6 Points (Formed)",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "38301c01",
    "defaultColor": "15"
   },
@@ -9707,7 +9760,9 @@
    "id": "38301c02",
    "categoria": "corpo",
    "nome": "Cape Cloth Scalloped 6 Points (Formed Shape 2)",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "38301c02",
    "defaultColor": "15"
   },
@@ -9715,7 +9770,9 @@
    "id": "38301p01",
    "categoria": "corpo",
    "nome": "Cape Cloth Scalloped  6 Points with Magenta",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "38301p01",
    "defaultColor": "26"
   },
@@ -9723,7 +9780,9 @@
    "id": "38301p01c01",
    "categoria": "corpo",
    "nome": "Cape Cloth Scalloped  6 Points with Inside Magenta Pattern (Formed)",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "38301p01c01",
    "defaultColor": "15"
   },
@@ -9731,7 +9790,9 @@
    "id": "38301p01c02",
    "categoria": "corpo",
    "nome": "Cape Cloth Scalloped 6 Points with Inside Magenta Pattern (Formed Shape 2)",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "38301p01c02",
    "defaultColor": "15"
   },
@@ -9838,8 +9899,8 @@
    "categoria": "acessorio",
    "nome": "Shield Triangular with Wolfpack",
    "tags": [
-    "marvel",
-    "castelo"
+    "castelo",
+    "marvel"
    ],
    "file": "3846p44",
    "defaultColor": "71",
@@ -9867,8 +9928,8 @@
    "categoria": "acessorio",
    "nome": "Shield Triangular with Black Falcon Blue Border",
    "tags": [
-    "marvel",
-    "castelo"
+    "castelo",
+    "marvel"
    ],
    "file": "3846p45",
    "defaultColor": "0",
@@ -9896,8 +9957,8 @@
    "categoria": "acessorio",
    "nome": "Shield Triangular with Black Falcon Yellow Border",
    "tags": [
-    "marvel",
-    "castelo"
+    "castelo",
+    "marvel"
    ],
    "file": "3846p46",
    "defaultColor": "0",
@@ -10019,8 +10080,8 @@
    "categoria": "acessorio",
    "nome": "Shield Triangular with Royal Knights Lion",
    "tags": [
-    "marvel",
-    "castelo"
+    "castelo",
+    "marvel"
    ],
    "file": "3846p4d",
    "defaultColor": "71",
@@ -10400,9 +10461,9 @@
    "categoria": "acessorio",
    "nome": "Shield Triangular with Goblin King Eye",
    "tags": [
-    "marvel",
+    "castelo",
     "lotr",
-    "castelo"
+    "marvel"
    ],
    "file": "3846pm0",
    "defaultColor": "71",
@@ -10716,7 +10777,9 @@
    "id": "39262",
    "categoria": "chapeu",
    "nome": "Crown with 5 Points",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "39262",
    "defaultColor": "0"
   },
@@ -11115,7 +11178,9 @@
    "id": "42450",
    "categoria": "corpo",
    "nome": "Cape Cloth with Pointed Ends and Collar",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "42450",
    "defaultColor": "15"
   },
@@ -11123,7 +11188,9 @@
    "id": "42450c01",
    "categoria": "corpo",
    "nome": "Cape Cloth with Pointed Ends and Collar (Formed)",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "42450c01",
    "defaultColor": "15"
   },
@@ -11466,7 +11533,9 @@
    "id": "45755p02",
    "categoria": "chapeu",
    "nome": "Headdress Circular Slice 60 Degrees with Yellow Cheese Red and Dark Red Pepperoni and Sauc",
-   "tags": [],
+   "tags": [
+    "ninjago"
+   ],
    "file": "45755p02",
    "defaultColor": "14"
   },
@@ -11526,7 +11595,9 @@
    "id": "48489",
    "categoria": "chapeu",
    "nome": "Helmet Visor with Pointy Sides and Eye Slit",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "48489",
    "defaultColor": "71"
   },
@@ -11664,14 +11735,6 @@
    "tags": [],
    "file": "50018g",
    "defaultColor": "71"
-  },
-  {
-   "id": "50231",
-   "categoria": "corpo",
-   "nome": "Cape Cloth",
-   "tags": [],
-   "file": "50231",
-   "defaultColor": "15"
   },
   {
    "id": "50231c02",
@@ -11962,7 +12025,9 @@
    "id": "56630",
    "categoria": "corpo",
    "nome": "Cape Cloth Scalloped  5 Points",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "56630",
    "defaultColor": "15"
   },
@@ -11970,7 +12035,9 @@
    "id": "56630c01",
    "categoria": "corpo",
    "nome": "Cape Cloth Scalloped  5 Points (Formed)",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "56630c01",
    "defaultColor": "15"
   },
@@ -12403,6 +12470,7 @@
    "categoria": "acessorio",
    "nome": "Gun SW Small Blaster DC-17",
    "tags": [
+    "dc batman",
     "star wars"
    ],
    "file": "61190a",
@@ -13257,8 +13325,8 @@
    "categoria": "acessorio",
    "nome": "Shield Round Bowed with DkGreen and Gold Rohan",
    "tags": [
-    "marvel",
-    "lotr"
+    "lotr",
+    "marvel"
    ],
    "file": "75902p01",
    "defaultColor": "71",
@@ -13506,8 +13574,8 @@
    "categoria": "acessorio",
    "nome": "Shield Round Bowed with SW Dejarik Hologame Board",
    "tags": [
-    "star wars",
-    "marvel"
+    "marvel",
+    "star wars"
    ],
    "file": "75902ps1",
    "defaultColor": "71",
@@ -14573,8 +14641,8 @@
    "categoria": "acessorio",
    "nome": "Shield Oval with SW Gungan Patrol Shield",
    "tags": [
-    "star wars",
-    "marvel"
+    "marvel",
+    "star wars"
    ],
    "file": "92747p01",
    "defaultColor": "71",
@@ -14752,7 +14820,9 @@
    "id": "93230",
    "categoria": "chapeu",
    "nome": "Hair Swept Back with Pointed Ears",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "93230",
    "defaultColor": "70"
   },
@@ -14760,7 +14830,9 @@
    "id": "93230p01",
    "categoria": "chapeu",
    "nome": "Hair Swept Back with Yellow Pointed Ears",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "93230p01",
    "defaultColor": "14"
   },
@@ -14768,7 +14840,9 @@
    "id": "93230p02",
    "categoria": "chapeu",
    "nome": "Hair Swept Back with Reddish Brown Pointed Ears",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "93230p02",
    "defaultColor": "70"
   },
@@ -14776,7 +14850,9 @@
    "id": "93230p03",
    "categoria": "chapeu",
    "nome": "Hair Swept Back with Green Pointed Ears",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "93230p03",
    "defaultColor": "2"
   },
@@ -14784,7 +14860,9 @@
    "id": "93230p04",
    "categoria": "chapeu",
    "nome": "Hair Swept Back with Light Nougat Pointed Ears",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "93230p04",
    "defaultColor": "70"
   },
@@ -14792,7 +14870,9 @@
    "id": "93230p05",
    "categoria": "chapeu",
    "nome": "Hair Swept Back with Medium Nougat Pointed Ears",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "93230p05",
    "defaultColor": "70"
   },
@@ -15479,8 +15559,8 @@
    "categoria": "torso",
    "nome": "Fire Power Emblem, Kunai Knives and Scabbard",
    "tags": [
-    "lotr",
-    "cidade"
+    "cidade",
+    "lotr"
    ],
    "file": "973p0y",
    "defaultColor": "15"
@@ -16135,7 +16215,9 @@
    "id": "973p3h",
    "categoria": "torso",
    "nome": "Red Loincloth and White Bone Necklace",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "file": "973p3h",
    "defaultColor": "4"
   },
@@ -16188,7 +16270,6 @@
    "categoria": "torso",
    "nome": "Blue Imperial Guard",
    "tags": [
-    "star wars",
     "pirata"
    ],
    "file": "973p3n",
@@ -16219,7 +16300,6 @@
    "categoria": "torso",
    "nome": "Red Imperial Guard",
    "tags": [
-    "star wars",
     "pirata"
    ],
    "file": "973p3q",
@@ -16230,7 +16310,6 @@
    "categoria": "torso",
    "nome": "Blue Imperial Guard Officer",
    "tags": [
-    "star wars",
     "pirata"
    ],
    "file": "973p3r",
@@ -16241,7 +16320,6 @@
    "categoria": "torso",
    "nome": "Red Imperial Guard Officer",
    "tags": [
-    "star wars",
     "pirata"
    ],
    "file": "973p3s",
@@ -16333,7 +16411,8 @@
    "categoria": "torso",
    "nome": "Black Falcon",
    "tags": [
-    "castelo"
+    "castelo",
+    "marvel"
    ],
    "file": "973p43",
    "defaultColor": "0"
@@ -16414,8 +16493,8 @@
    "categoria": "torso",
    "nome": "Royal Knights Lion-Head Shield",
    "tags": [
-    "marvel",
-    "castelo"
+    "castelo",
+    "marvel"
    ],
    "file": "973p4d",
    "defaultColor": "15"
@@ -16956,7 +17035,9 @@
    "id": "973p64",
    "categoria": "torso",
    "nome": "Unitron",
-   "tags": [],
+   "tags": [
+    "espaco classico"
+   ],
    "file": "973p64",
    "defaultColor": "15"
   },
@@ -16995,7 +17076,8 @@
    "categoria": "torso",
    "nome": "Space Police II and Radio",
    "tags": [
-    "cidade"
+    "cidade",
+    "espaco classico"
    ],
    "file": "973p69",
    "defaultColor": "15"
@@ -17005,7 +17087,8 @@
    "categoria": "torso",
    "nome": "Space Police II Chief",
    "tags": [
-    "cidade"
+    "cidade",
+    "espaco classico"
    ],
    "file": "973p6a",
    "defaultColor": "15"
@@ -17253,8 +17336,8 @@
    "categoria": "torso",
    "nome": "Jacket, Tie and Police Badge Yellow Star",
    "tags": [
-    "star wars",
-    "cidade"
+    "cidade",
+    "star wars"
    ],
    "file": "973p76",
    "defaultColor": "15"
@@ -17342,8 +17425,8 @@
    "categoria": "torso",
    "nome": "Female Police Shirt with Gold Badge, Pocket and Black Tie",
    "tags": [
-    "star wars",
-    "cidade"
+    "cidade",
+    "star wars"
    ],
    "file": "973p7l",
    "defaultColor": "297"
@@ -17505,8 +17588,8 @@
    "categoria": "torso",
    "nome": "Suit and Red Tie with Train Logo",
    "tags": [
-    "star wars",
-    "cidade"
+    "cidade",
+    "star wars"
    ],
    "file": "973p83",
    "defaultColor": "15"
@@ -18088,8 +18171,8 @@
    "categoria": "torso",
    "nome": "Pharaoh Breastplate",
    "tags": [
-    "castelo",
-    "aventureiros"
+    "aventureiros",
+    "castelo"
    ],
    "file": "973pa2",
    "defaultColor": "15"
@@ -18410,7 +18493,9 @@
    "id": "973pbd",
    "categoria": "torso",
    "nome": "War Machine Armoured Suit",
-   "tags": [],
+   "tags": [
+    "marvel"
+   ],
    "file": "973pbd",
    "defaultColor": "15"
   },
@@ -18438,7 +18523,9 @@
    "id": "973pbg",
    "categoria": "torso",
    "nome": "Iron Patriot Armoured Suit",
-   "tags": [],
+   "tags": [
+    "marvel"
+   ],
    "file": "973pbg",
    "defaultColor": "15"
   },
@@ -18496,7 +18583,9 @@
    "id": "973pbp",
    "categoria": "torso",
    "nome": "Spider-Girl",
-   "tags": [],
+   "tags": [
+    "marvel"
+   ],
    "file": "973pbp",
    "defaultColor": "15"
   },
@@ -18588,7 +18677,9 @@
    "id": "973pc0",
    "categoria": "torso",
    "nome": "Green Lantern Logo on White Background and Muscles Outline",
-   "tags": [],
+   "tags": [
+    "dc batman"
+   ],
    "file": "973pc0",
    "defaultColor": "2"
   },
@@ -18604,9 +18695,7 @@
    "id": "973pc11",
    "categoria": "torso",
    "nome": "American Indian Necklace and Fringe",
-   "tags": [
-    "faroeste"
-   ],
+   "tags": [],
    "file": "973pc11",
    "defaultColor": "15"
   },
@@ -18744,8 +18833,8 @@
    "categoria": "torso",
    "nome": "Egyptian Royal Seal and Belt",
    "tags": [
-    "castelo",
-    "aventureiros"
+    "aventureiros",
+    "castelo"
    ],
    "file": "973pc5e",
    "defaultColor": "15"
@@ -19586,8 +19675,8 @@
    "categoria": "torso",
    "nome": "HP Harry Potter Uniform Gryffindor Stripe and Shield",
    "tags": [
-    "marvel",
-    "harry potter"
+    "harry potter",
+    "marvel"
    ],
    "file": "973pha",
    "defaultColor": "15"
@@ -19713,8 +19802,8 @@
    "categoria": "torso",
    "nome": "LOTR Button Shirt with Braces",
    "tags": [
-    "lotr",
-    "cidade"
+    "cidade",
+    "lotr"
    ],
    "file": "973pm2",
    "defaultColor": "15"
@@ -21143,9 +21232,7 @@
    "id": "973pwe",
    "categoria": "torso",
    "nome": "Buckskin Tunic, American Indian Necklace and Dark Turquoise Squares",
-   "tags": [
-    "faroeste"
-   ],
+   "tags": [],
    "file": "973pwe",
    "defaultColor": "15"
   },
@@ -22492,7 +22579,9 @@
    "id": "73200bpaw",
    "categoria": "pernas",
    "nome": "Hips and Legs with Dark Grey Belt, Dark Red Loincloth, White Claws, Fur Tail",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "legs": "normal",
    "legsParts": {
     "hips": "3815bpaw",
@@ -22505,7 +22594,9 @@
    "id": "73200bpaz",
    "categoria": "pernas",
    "nome": "Hips and Legs with Dark Red Loincloth, Belt with White Spikes and White Claws",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "legs": "normal",
    "legsParts": {
     "hips": "3815bpaz",
@@ -22600,7 +22691,9 @@
    "id": "73200bpbd",
    "categoria": "pernas",
    "nome": "Hips and Legs with War Machine Armoured Suit",
-   "tags": [],
+   "tags": [
+    "marvel"
+   ],
    "legs": "normal",
    "legsParts": {
     "hips": "3815bpbd",
@@ -22643,7 +22736,9 @@
    "id": "73200bpbg",
    "categoria": "pernas",
    "nome": "Hips and Legs with Iron Patriot Armoured Suit",
-   "tags": [],
+   "tags": [
+    "marvel"
+   ],
    "legs": "normal",
    "legsParts": {
     "hips": "3815bpbg",
@@ -22737,7 +22832,9 @@
    "id": "73200bpc4b",
    "categoria": "pernas",
    "nome": "Hips and Legs with Shorts with Black Line and Lion Crest",
-   "tags": [],
+   "tags": [
+    "castelo"
+   ],
    "legs": "normal",
    "legsParts": {
     "hips": "3815b",
@@ -23057,7 +23154,9 @@
    "id": "73200bpq0",
    "categoria": "pernas",
    "nome": "Hips and Legs with Dark Blue Loincloth",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "legs": "normal",
    "legsParts": {
     "hips": "3815bpq0",
@@ -23070,7 +23169,9 @@
    "id": "73200bpq1",
    "categoria": "pernas",
    "nome": "Hips and Legs with Dark Blue and Decorated Gold Loincloth",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "legs": "normal",
    "legsParts": {
     "hips": "3815bpq1",
@@ -23083,7 +23184,9 @@
    "id": "73200bpq2",
    "categoria": "pernas",
    "nome": "Hips and Legs with Dark Blue and Gold Loincloth",
-   "tags": [],
+   "tags": [
+    "lotr"
+   ],
    "legs": "normal",
    "legsParts": {
     "hips": "3815bpq2",

@@ -1,7 +1,8 @@
-// Sidebar: abas de categoria, busca e grid de peças.
+// Sidebar: abas de categoria, busca, grid de peças, pré-carga de miniaturas
+// e redimensionamento por arrasto.
 
 import * as state from '../state.js';
-import { requestThumb } from './thumbs.js';
+import { requestThumb, preloadThumbs, onThumbProgress, pendingThumbs } from './thumbs.js';
 
 export const TABS = [
   { slot: 'head', label: '🙂 Cabeça', cat: 'cabeca' },
@@ -18,10 +19,12 @@ export const TABS = [
 
 let activeTab = TABS[0];
 let onSlotFocus = () => {};
+let currentItems = [];
 
 const tabsEl = document.getElementById('tabs');
 const gridEl = document.getElementById('parts-grid');
 const searchEl = document.getElementById('search');
+const preloadBtn = document.getElementById('btn-preload');
 
 function normalize(s) {
   return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -30,13 +33,18 @@ function normalize(s) {
 function matches(part, query) {
   if (!query) return true;
   const q = normalize(query);
-  return normalize(part.nome).includes(q) || part.tags.some((t) => normalize(t).includes(q)) || part.id.includes(q);
+  return (
+    normalize(part.nome).includes(q) ||
+    (part.tags || []).some((t) => normalize(t).includes(q)) ||
+    part.id.toLowerCase().includes(q)
+  );
 }
 
-function makeCard({ name, partId, selected, part, removeIcon, onClick }) {
+function makeCard({ name, partId, selected, part, removeIcon, selCheck, onClick }) {
   const card = document.createElement('button');
   card.className = 'part-card' + (selected ? ' selected' : '');
   card.type = 'button';
+  card._selCheck = selCheck;
 
   const thumb = document.createElement('div');
   thumb.className = 'part-thumb';
@@ -68,11 +76,19 @@ function makeCard({ name, partId, selected, part, removeIcon, onClick }) {
   return card;
 }
 
-function renderGrid() {
+// Atualiza só o destaque de seleção — sem reconstruir a lista (preserva o scroll)
+function updateSelection() {
+  for (const card of gridEl.querySelectorAll('.part-card')) {
+    if (card._selCheck) card.classList.toggle('selected', card._selCheck());
+  }
+}
+
+function renderGrid({ keepScroll = false } = {}) {
   const cfg = state.config;
   const query = searchEl.value.trim();
+  const prevScroll = gridEl.scrollTop;
   gridEl.innerHTML = '';
-  gridEl.scrollTop = 0;
+  currentItems = [];
 
   const addSection = (title) => {
     const el = document.createElement('div');
@@ -82,19 +98,20 @@ function renderGrid() {
   };
 
   if (activeTab.slot === 'extras') {
-    // duas sub-seções: base e pet, ambas removíveis
     for (const sub of [
       { key: 'base', title: 'Base' },
       { key: 'pet', title: 'Pet' },
     ]) {
-      const items = state.db.partsList.filter((p) => p.categoria === 'extra' && p.sub === sub.key && matches(p, query));
+      const items = state.db.partsList.filter((p) => p.categoria === 'extra' && (p.sub || 'pet') === sub.key && matches(p, query));
       if (!items.length && query) continue;
+      currentItems.push(...items);
       addSection(sub.title);
       gridEl.appendChild(
         makeCard({
           name: 'Nenhum',
           selected: !cfg.slots[sub.key].part,
           removeIcon: true,
+          selCheck: () => !state.config.slots[sub.key].part,
           onClick: () => state.setPart(sub.key, null),
         })
       );
@@ -105,6 +122,7 @@ function renderGrid() {
             partId: p.id,
             part: p,
             selected: cfg.slots[sub.key].part === p.id,
+            selCheck: () => state.config.slots[sub.key].part === p.id,
             onClick: () => {
               state.setPart(sub.key, p.id, { toggle: true });
               onSlotFocus(sub.key);
@@ -113,46 +131,65 @@ function renderGrid() {
         );
       }
     }
-    if (!gridEl.children.length) showEmpty();
-    return;
+  } else {
+    const items = state.db.partsList.filter((p) => p.categoria === activeTab.cat && matches(p, query));
+    currentItems = items;
+    const slot = activeTab.slot;
+
+    if (activeTab.removable && !query) {
+      gridEl.appendChild(
+        makeCard({
+          name: activeTab.removeLabel || 'Nenhum',
+          selected: !cfg.slots[slot].part,
+          removeIcon: true,
+          selCheck: () => !state.config.slots[slot].part,
+          onClick: () => state.setPart(slot, null),
+        })
+      );
+    }
+
+    for (const p of items) {
+      gridEl.appendChild(
+        makeCard({
+          name: p.nome,
+          partId: p.id,
+          part: p,
+          selected: cfg.slots[slot].part === p.id,
+          selCheck: () => state.config.slots[slot].part === p.id,
+          onClick: () => {
+            state.setPart(slot, p.id, { toggle: !!activeTab.removable });
+            onSlotFocus(slot);
+          },
+        })
+      );
+    }
   }
 
-  const items = state.db.partsList.filter((p) => p.categoria === activeTab.cat && matches(p, query));
-
-  if (activeTab.removable && !query) {
-    gridEl.appendChild(
-      makeCard({
-        name: activeTab.removeLabel || 'Nenhum',
-        selected: !cfg.slots[activeTab.slot].part,
-        removeIcon: true,
-        onClick: () => state.setPart(activeTab.slot, null),
-      })
-    );
+  if (!gridEl.querySelector('.part-card')) {
+    const el = document.createElement('div');
+    el.className = 'grid-empty';
+    el.textContent = 'Nenhuma peça encontrada 🔍';
+    gridEl.appendChild(el);
   }
 
-  for (const p of items) {
-    gridEl.appendChild(
-      makeCard({
-        name: p.nome,
-        partId: p.id,
-        part: p,
-        selected: cfg.slots[activeTab.slot].part === p.id,
-        onClick: () => {
-          state.setPart(activeTab.slot, p.id, { toggle: !!activeTab.removable });
-          onSlotFocus(activeTab.slot);
-        },
-      })
-    );
-  }
-
-  if (!gridEl.children.length) showEmpty();
+  gridEl.scrollTop = keepScroll ? prevScroll : 0;
+  updatePreloadButton();
 }
 
-function showEmpty() {
-  const el = document.createElement('div');
-  el.className = 'grid-empty';
-  el.textContent = 'Nenhuma peça encontrada 🔍';
-  gridEl.appendChild(el);
+/* ---------------- pré-carga de miniaturas ---------------- */
+
+let preloadActive = false;
+
+function updatePreloadButton(pending) {
+  if (!preloadBtn) return;
+  if (preloadActive && pending > 0) {
+    preloadBtn.textContent = `⏳ Gerando… faltam ${pending}`;
+    preloadBtn.disabled = true;
+  } else {
+    preloadActive = false;
+    preloadBtn.textContent = `⚡ Gerar miniaturas da aba (${currentItems.length})`;
+    preloadBtn.disabled = currentItems.length === 0;
+  }
 }
 
 function renderTabs() {
@@ -173,10 +210,56 @@ function renderTabs() {
   }
 }
 
+/* ---------------- redimensionamento ---------------- */
+
+function initResize() {
+  const handle = document.getElementById('sidebar-resize');
+  const mainEl = document.querySelector('main');
+  if (!handle || !mainEl) return;
+  const saved = localStorage.getItem('minifig.sidebarW');
+  if (saved) mainEl.style.setProperty('--sidebar-w', `${saved}px`);
+
+  let startX = 0;
+  let startW = 0;
+  const onMove = (e) => {
+    const w = Math.min(640, Math.max(240, startW + (e.clientX - startX)));
+    mainEl.style.setProperty('--sidebar-w', `${w}px`);
+  };
+  const onUp = (e) => {
+    document.removeEventListener('pointermove', onMove);
+    document.removeEventListener('pointerup', onUp);
+    const w = Math.min(640, Math.max(240, startW + (e.clientX - startX)));
+    localStorage.setItem('minifig.sidebarW', String(w));
+  };
+  handle.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    startX = e.clientX;
+    startW = document.getElementById('sidebar').getBoundingClientRect().width;
+    document.addEventListener('pointermove', onMove);
+    document.addEventListener('pointerup', onUp);
+  });
+}
+
+/* ---------------- init ---------------- */
+
 export function initSidebar({ onFocusSlot }) {
   onSlotFocus = onFocusSlot;
   renderTabs();
   renderGrid();
-  searchEl.addEventListener('input', renderGrid);
-  state.on('change', renderGrid);
+  initResize();
+
+  searchEl.addEventListener('input', () => renderGrid());
+
+  // seleção muda sem reconstruir a lista; a lista só re-renderiza em
+  // troca de aba/busca (ou import/aleatório, onde manter o scroll é ok)
+  state.on('change', updateSelection);
+
+  preloadBtn?.addEventListener('click', () => {
+    preloadActive = true;
+    preloadThumbs(currentItems);
+    updatePreloadButton(pendingThumbs());
+  });
+  onThumbProgress((pending) => {
+    if (preloadActive) updatePreloadButton(pending);
+  });
 }

@@ -97,9 +97,30 @@ input, button { font: inherit; color: inherit; }
 /* ===== Layout ===== */
 main {
   display: grid;
-  grid-template-columns: 305px 1fr 285px;
+  grid-template-columns: var(--sidebar-w, 305px) 6px 1fr 285px;
   height: calc(100vh - var(--toolbar-h));
 }
+
+#sidebar-resize {
+  cursor: col-resize;
+  background: var(--bg-1);
+  border-right: 1px solid var(--line);
+  position: relative;
+}
+#sidebar-resize::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 1px;
+  width: 3px;
+  height: 36px;
+  transform: translateY(-50%);
+  border-radius: 2px;
+  background: var(--line);
+  transition: background .15s;
+}
+#sidebar-resize:hover::after,
+#sidebar-resize:active::after { background: var(--accent); }
 
 /* ===== Sidebar (peças) ===== */
 #sidebar {
@@ -133,7 +154,13 @@ main {
   color: var(--accent-text);
   font-weight: 600;
 }
-.search-wrap { padding: 10px 10px 6px; }
+.search-wrap { padding: 10px 10px 6px; display: flex; flex-direction: column; gap: 7px; }
+.btn-preload {
+  font-size: 12px;
+  padding: 6px 10px;
+  background: var(--bg-2);
+}
+.btn-preload:disabled { opacity: .55; }
 #search {
   width: 100%;
   background: var(--bg-2);
@@ -526,6 +553,7 @@ input[type="range"]::-moz-range-thumb {
 /* ===== Mobile ===== */
 @media (max-width: 920px) {
   main { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+  #sidebar-resize { display: none; }
   #toolbar { overflow-x: auto; gap: 6px; }
   #toolbar .logo { font-size: 14px; }
   #toolbar .btn { padding: 6px 9px; font-size: 12.5px; }

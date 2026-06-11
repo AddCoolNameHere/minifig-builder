@@ -36,10 +36,12 @@
     <aside id="sidebar" class="drawer">
       <nav id="tabs" aria-label="Categorias de peças"></nav>
       <div class="search-wrap">
-        <input id="search" type="search" placeholder="Buscar peça por nome ou tag…" autocomplete="off">
+        <input id="search" type="search" placeholder="Buscar: nome, star wars, marvel, lotr…" autocomplete="off">
+        <button id="btn-preload" class="btn btn-preload" type="button" title="Renderiza todas as miniaturas desta aba (ficam salvas no navegador)">⚡ Gerar miniaturas da aba</button>
       </div>
       <div id="parts-grid" role="listbox"></div>
     </aside>
+    <div id="sidebar-resize" title="Arraste para redimensionar"></div>
 
     <div id="viewport">
       <canvas id="c"></canvas>

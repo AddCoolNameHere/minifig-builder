@@ -1,4 +1,5 @@
-// Miniaturas 3D das peças oficiais, renderizadas sob demanda.
+// Miniaturas 3D das peças, renderizadas sob demanda, com cache persistente
+// em IndexedDB — cada miniatura é gerada uma única vez por máquina.
 
 import * as THREE from 'three';
 import { loadPart, loadComposite } from '../minifig/ldparts.js';
@@ -8,9 +9,54 @@ const SIZE = 140;
 let renderer = null;
 let scene = null;
 let camera = null;
-const cache = new Map();
+const cache = new Map();       // part.id -> dataURL | null
 const queue = [];
 let pumping = false;
+const progressListeners = new Set();
+
+/* ---------------- IndexedDB ---------------- */
+
+let dbPromise = null;
+
+function idb() {
+  if (!dbPromise) {
+    dbPromise = new Promise((resolve) => {
+      try {
+        const req = indexedDB.open('minifig-thumbs', 1);
+        req.onupgradeneeded = () => req.result.createObjectStore('thumbs');
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => resolve(null);
+      } catch {
+        resolve(null);
+      }
+    });
+  }
+  return dbPromise;
+}
+
+async function idbGet(key) {
+  const db = await idb();
+  if (!db) return null;
+  return new Promise((resolve) => {
+    try {
+      const r = db.transaction('thumbs').objectStore('thumbs').get(key);
+      r.onsuccess = () => resolve(r.result || null);
+      r.onerror = () => resolve(null);
+    } catch {
+      resolve(null);
+    }
+  });
+}
+
+async function idbSet(key, value) {
+  const db = await idb();
+  if (!db) return;
+  try {
+    db.transaction('thumbs', 'readwrite').objectStore('thumbs').put(value, key);
+  } catch { /* quota — ignora */ }
+}
+
+/* ---------------- renderização ---------------- */
 
 function ensureRenderer() {
   if (renderer) return;
@@ -78,34 +124,49 @@ async function renderThumb(part) {
   camera.lookAt(center);
 
   renderer.render(scene, camera);
-  const url = renderer.domElement.toDataURL('image/png');
+  const url = renderer.domElement.toDataURL('image/jpeg', 0.85);
   scene.remove(obj);
   return url;
+}
+
+function applyToDom(part, url) {
+  const target = document.querySelector(`img[data-part-id="${CSS.escape(part.id)}"]`);
+  if (url && target && !target.src) target.src = url;
+}
+
+function notifyProgress() {
+  for (const fn of progressListeners) fn(queue.length);
 }
 
 async function pump() {
   if (pumping) return;
   pumping = true;
   while (queue.length) {
-    const { part, img } = queue.shift();
+    const { part } = queue.shift();
     let url = cache.get(part.id);
     if (url === undefined) {
-      try {
-        url = await renderThumb(part);
-      } catch (err) {
-        console.warn('thumb falhou:', part.id, err);
-        url = null;
+      url = await idbGet(part.id);
+      if (!url) {
+        try {
+          url = await renderThumb(part);
+          if (url) idbSet(part.id, url);
+        } catch (err) {
+          console.warn('thumb falhou:', part.id, err);
+          url = null;
+        }
       }
       cache.set(part.id, url);
     }
-    // a grid pode ter re-renderizado: localiza o img atual da peça
-    const target = img.isConnected ? img : document.querySelector(`img[data-part-id="${CSS.escape(part.id)}"]`);
-    if (url && target) target.src = url;
+    if (url) applyToDom(part, url);
+    notifyProgress();
     // respiro para não travar a UI
     await new Promise((r) => setTimeout(r, 0));
   }
   pumping = false;
+  notifyProgress();
 }
+
+/* ---------------- API ---------------- */
 
 export function requestThumb(part, img) {
   const cached = cache.get(part.id);
@@ -113,6 +174,29 @@ export function requestThumb(part, img) {
     img.src = cached;
     return;
   }
-  queue.push({ part, img });
+  if (!queue.some((q) => q.part.id === part.id)) queue.push({ part });
   pump();
+}
+
+/** Enfileira todas as peças dadas; retorna quantas faltavam. */
+export function preloadThumbs(parts) {
+  let added = 0;
+  for (const part of parts) {
+    if (cache.get(part.id) !== undefined) continue;
+    if (!queue.some((q) => q.part.id === part.id)) {
+      queue.push({ part });
+      added++;
+    }
+  }
+  pump();
+  return added;
+}
+
+export function onThumbProgress(fn) {
+  progressListeners.add(fn);
+  return () => progressListeners.delete(fn);
+}
+
+export function pendingThumbs() {
+  return queue.length;
 }
